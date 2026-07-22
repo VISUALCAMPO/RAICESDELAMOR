@@ -756,7 +756,7 @@ function buildResumo() {
   `;
 }
 
-function submitForm() {
+async function submitForm() {
   const t = document.getElementById('termos').checked;
   const l = document.getElementById('lgpd').checked;
   if (!t) document.getElementById('err-termos').style.display = 'block';
@@ -765,48 +765,65 @@ function submitForm() {
   else document.getElementById('err-lgpd').style.display = 'none';
   if (!t || !l) return;
 
-  // Coletando os dados do formulário
+  // COLE AQUI O SEU LINK DO FORMSPREE
+  const formspreeLink = https://formspree.io/f/mnjebdww; 
+
+  // Coletando os dados
   const g = (id) => document.getElementById(id)?.value || 'Não informado';
   const r = (name) => {
     const el = document.querySelector(`input[name="${name}"]:checked`);
     return el ? el.value : 'Não informado';
   };
-  
   const servicosArr = [...document.querySelectorAll('input[name="servico"]:checked')].map(i => i.value);
   const servicos = servicosArr.length > 0 ? servicosArr.join(', ') : 'Não informado';
 
-  // Montando a mensagem para o WhatsApp da Elena
-  let mensagem = `*🌿 Nova Intenção - Raíces del Amor*\n\n`;
-  mensagem += `*Nome:* ${g('nome')}${g('apelido') ? ' (' + g('apelido') + ')' : ''}\n`;
-  mensagem += `*WhatsApp:* ${g('whatsapp')}\n`;
-  mensagem += `*E-mail:* ${g('email')}\n`;
-  mensagem += `*Cidade:* ${g('cidade')}\n`;
-  mensagem += `*Atendimento:* ${g('modalidade')}\n`;
-  mensagem += `*Origem:* ${r('origem')}\n\n`;
-  mensagem += `*Interesse em:* ${servicos}\n`;
-  mensagem += `*Sentindo-se:* ${r('momento')}\n`;
-  mensagem += `*Experiência:* ${r('experiencia')}\n\n`;
-  if(g('mensagem') !== 'Não informado') mensagem += `*Mensagem:* ${g('mensagem')}\n\n`;
-  if(g('horario') !== 'Não informado') mensagem += `*Preferência de Horário:* ${g('horario')}\n`;
-  if(g('obs') !== 'Não informado') mensagem += `*Outras infos:* ${g('obs')}\n`;
+  // Criando o corpo do e-mail em formato de texto
+  let mensagem = `🌿 Nova Intenção - Raíces del Amor\n\n`;
+  mensagem += `Nome: ${g('nome')}${g('apelido') !== 'Não informado' ? ' (' + g('apelido') + ')' : ''}\n`;
+  mensagem += `WhatsApp: ${g('whatsapp')}\n`;
+  mensagem += `E-mail: ${g('email')}\n`;
+  mensagem += `Cidade: ${g('cidade')}\n`;
+  mensagem += `Atendimento: ${g('modalidade')}\n`;
+  mensagem += `Origem: ${r('origem')}\n\n`;
+  mensagem += `Interesse em: ${servicos}\n`;
+  mensagem += `Sentindo-se: ${r('momento')}\n`;
+  mensagem += `Experiência: ${r('experiencia')}\n\n`;
+  if(g('mensagem') !== 'Não informado') mensagem += `Mensagem: ${g('mensagem')}\n\n`;
+  if(g('horario') !== 'Não informado') mensagem += `Preferência de Horário: ${g('horario')}\n`;
+  if(g('obs') !== 'Não informado') mensagem += `Outras infos: ${g('obs')}\n`;
 
-  // Número da Elena
-  const numeroElena = '5516992221496';
-  
-  // Criando o link do WhatsApp
-  const linkWhatsApp = `https://wa.me/${numeroElena}?text=${encodeURIComponent(mensagem)}`;
+  // Dados para enviar via Formspree
+  const data = {
+    _subject: "Nova Intenção Recebida - Raíces del Amor",
+    message: mensagem,
+    email: g('email')
+  };
 
-  // Abre o WhatsApp em uma nova aba
-  window.open(linkWhatsApp, '_blank');
+  try {
+    const response = await fetch(formspreeLink, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
-  // Mostra a tela de sucesso no site
-  document.querySelectorAll('.section-card, .steps, .progress-wrap').forEach(el => el.style.display = 'none');
-  document.getElementById('formFooter').style.display = 'none';
-  const nome = document.getElementById('nome').value;
-  const apelido = document.getElementById('apelido').value;
-  document.getElementById('nomeConfirm').textContent = apelido || nome;
-  document.getElementById('successScreen').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (response.ok) {
+      // Mostra a tela de sucesso
+      document.querySelectorAll('.section-card, .steps, .progress-wrap').forEach(el => el.style.display = 'none');
+      document.getElementById('formFooter').style.display = 'none';
+      const nome = document.getElementById('nome').value;
+      const apelido = document.getElementById('apelido').value;
+      document.getElementById('nomeConfirm').textContent = apelido || nome;
+      document.getElementById('successScreen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      alert('Ocorreu um erro no envio. Tente novamente.');
+    }
+  } catch (error) {
+    alert('Erro de conexão. Verifique sua internet.');
+  }
 }
 </script>
 </body>
