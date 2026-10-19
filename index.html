@@ -1,325 +1,1292 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raíces del Amor — Espaço Terapêutico | Elena</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Local Business Optimization -->
+  <title>Raíces del Amor · Espaço Terapêutico & Biomagnetismo | Elena Aberastain em Ribeirão Preto</title>
+  <meta name="description" content="Espaço Terapêutico Raíces del Amor em Ribeirão Preto - SP. Cuidado humanizado com Biomagnetismo Médico (Dr. Isaac Goiz), Constelação Familiar, Reiki, Reflexologia Podal, Cura Arcturiana e Atendimentos Presenciais, Online, Domiciliares e Hospitalares.">
+  <meta name="keywords" content="biomagnetismo ribeirao preto, constelacao familiar ribeirao preto, reiki ribeirao preto, reflexologia sao luiz, elena aberastain, raices del amor, cura arcturiana, atendimento domiciliar hospitalar ribeirao preto">
+  
+  <!-- Open Graph / Redes Sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Raíces del Amor · Espaço Terapêutico | Elena Aberastain">
+  <meta property="og:description" content="Um refúgio de paz, cura bioenergética e autoconhecimento na Rua Felipe Achê, 567 - Jardim São Luiz, Ribeirão Preto - SP.">
+  <meta property="og:url" content="https://visualcampo.github.io/RAICESDELAMOR/">
+  
+  <!-- Google Fonts: Cormorant Garamond (Elegância e Mansidão) & Jost (Clareza e Modernidade) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <style>
+    /* ==========================================================
+       PALETA TERAPÊUTICA & CROMOTERAPIA DE EXCELÊNCIA
+       Verde Sálvia (Regeneração) + Rosa Quartzo (Amor Incondicional)
+       + Dourado Solar (Luz & Sabedoria) + Areia Serena (Conforto)
+       ========================================================== */
+    :root {
+      --sage-deep:    #243D2F;   /* Verde Eucalipto Profundo (Solidez, Raízes) */
+      --sage:         #3F614C;   /* Verde Sálvia Terapêutico */
+      --sage-light:   #EAF1EC;   /* Névoa de Sálvia Suave */
+      --rose-deep:    #8C4052;   /* Rosa Veludo Acolhedor */
+      --rose-quartz:  #D98895;   /* Quartzo Rosa (Coração / René Mey) */
+      --rose-light:   #F9F1F3;   /* Pétala Suave */
+      --gold:         #C6933B;   /* Dourado Solar / Consciência */
+      --gold-light:   #F5ECCF;   /* Toque Dourado Suave */
+      --sand-bg:      #FAF8F5;   /* Areia Serena / Alívio Visual */
+      --cream-card:   #FFFFFF;   /* Branco Puro para Cards */
+      --text-dark:    #1F2B23;   /* Texto Chumbo Esmeralda Profundo */
+      --text-muted:   #5C6B61;   /* Texto Suave e Amigável */
+      --border-soft:  #E2DDD4;   /* Bordas Sutis */
+      --shadow-sm:    0 4px 15px rgba(36, 61, 47, 0.05);
+      --shadow-md:    0 10px 30px rgba(36, 61, 47, 0.08);
+      --shadow-lg:    0 20px 45px rgba(36, 61, 47, 0.12);
+      --radius-sm:    12px;
+      --radius-md:    20px;
+      --radius-lg:    30px;
+    }
 
-  :root {
-    --earth:    #2C1A0E;
-    --wine:     #5C2035;
-    --rose:     #A0445A;
-    --blush:    #E8C4C0;
-    --cream:    #FAF6F0;
-    --sage:     #6B8C72;
-    --gold:     #C4943C;
-    --sand:     #E8D8C0;
-    --muted:    #8A6F6F;
-    --white:    #FFFFFF;
-    --border:   #E0CABA;
-  }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--cream);
-    color: var(--earth);
-    line-height: 1.6;
-  }
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--sand-bg);
+      color: var(--text-dark);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
 
-  /* HEADER E NAV */
-  header {
-    background: rgba(250, 246, 240, 0.95);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 20px rgba(44,26,14,0.05);
-  }
-  nav {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 1.5rem;
-  }
-  .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--wine);
-    text-decoration: none;
-    letter-spacing: 1px;
-  }
-  .logo em { color: var(--gold); font-style: italic; font-weight: 300; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--earth);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--rose); }
+    /* TIPOGRAFIA */
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      color: var(--sage-deep);
+      line-height: 1.25;
+    }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(160deg, var(--earth) 0%, var(--wine) 100%);
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  /* AQUI ENTRA A FOTO DE FUNDO DO HERO */
-  .hero-bg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('db071557-b083-4d2e-8d68-433f1a6ee441.JPG');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.25;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 700px; }
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-  .hero h1 strong { font-weight: 600; color: var(--gold); font-style: italic; }
-  .hero p {
-    color: rgba(255,255,255,0.8);
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .btn-primary {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--earth);
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 20px rgba(196,148,60,0.4);
-  }
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(196,148,60,0.6);
-  }
+    em { font-style: italic; font-weight: 400; color: var(--gold); }
+    a { text-decoration: none; transition: all 0.3s ease; }
 
-  /* SEÇÕES GERAIS */
-  section { padding: 5rem 1.5rem; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .section-title {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    color: var(--wine);
-    margin-bottom: 1rem;
-  }
-  .section-subtitle {
-    text-align: center;
-    color: var(--muted);
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    font-size: 1.1rem;
-  }
+    /* BARRA SUPERIOR DE ACOLHIMENTO LOCAL */
+    .top-bar {
+      background: var(--sage-deep);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-bar-location { display: flex; align-items: center; gap: 8px; }
+    .top-bar-contact a {
+      color: var(--gold-light);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar-contact a:hover { color: #FFFFFF; }
 
-  /* SOBRE */
-  .sobre-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .sobre-img {
-    width: 100%;
-    height: 500px;
-    border-radius: 20px;
-    object-fit: cover;
-    box-shadow: 0 10px 40px rgba(92,32,53,0.2);
-  }
-  .sobre-text h2 { text-align: left; margin-bottom: 1.5rem; }
-  .sobre-text p { margin-bottom: 1rem; color: var(--earth); }
+    /* HEADER & NAVEGAÇÃO */
+    header {
+      background: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-soft);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--sage-deep);
+      letter-spacing: 0.5px;
+    }
+    .brand-tagline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: var(--rose-deep);
+      font-weight: 600;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-menu a {
+      color: var(--text-dark);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-menu a:hover { color: var(--rose-deep); }
+    
+    .btn-header-wa {
+      background: var(--sage);
+      color: #FFFFFF !important;
+      padding: 0.55rem 1.2rem;
+      border-radius: 50px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(63, 97, 76, 0.25);
+    }
+    .btn-header-wa:hover {
+      background: var(--sage-deep);
+      transform: translateY(-2px);
+    }
 
-  /* SERVIÇOS */
-  .servicos { background: var(--white); }
-  .servicos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .servico-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    transition: transform 0.3s;
-  }
-  .servico-card:hover { transform: translateY(-5px); border-color: var(--rose); }
-  .servico-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-  .servico-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--wine); margin-bottom: 0.5rem; }
-  .servico-card p { font-size: 0.95rem; color: var(--muted); }
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: radial-gradient(circle at 50% 20%, rgba(217, 136, 149, 0.15) 0%, rgba(63, 97, 76, 0.08) 60%, var(--sand-bg) 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -150px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(198, 147, 59, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--border-soft);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--sage-deep);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge span { color: var(--gold); }
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 400;
+      color: var(--sage-deep);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+    .hero h1 strong {
+      font-weight: 700;
+      color: var(--rose-deep);
+      font-style: italic;
+    }
+    .hero-p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
 
-  /* GALERIA DE FOTOS */
-  .galeria-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-  }
-  .galeria-item {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    cursor: pointer;
-  }
-  .galeria-item:hover { transform: scale(1.03); }
+    /* BOTÕES GERAIS */
+    .btn-main {
+      background: linear-gradient(135deg, var(--rose-deep) 0%, #722E3E 100%);
+      color: #FFFFFF;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(140, 64, 82, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(140, 64, 82, 0.45);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--sage-deep);
+      border: 1px solid var(--border-soft);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-secondary:hover {
+      background: #FFFFFF;
+      border-color: var(--sage);
+      transform: translateY(-2px);
+    }
 
-  /* CTA FINAL */
-  .cta-final {
-    background: linear-gradient(135deg, var(--wine), var(--earth));
-    text-align: center;
-    color: var(--white);
-  }
-  .cta-final h2 { color: var(--white); margin-bottom: 1rem; }
-  .cta-final p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+    /* SEÇÕES GERAIS */
+    section { padding: 5.5rem 1.5rem; position: relative; }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 3.5rem; }
+    .section-eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-title { font-size: 2.8rem; color: var(--sage-deep); margin-bottom: 1rem; }
+    .section-desc { font-size: 1.15rem; color: var(--text-muted); font-weight: 300; }
 
-  /* FOOTER */
-  footer {
-    background: var(--earth);
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    padding: 2rem 1.5rem;
-    font-size: 0.9rem;
-  }
-  footer a { color: var(--gold); text-decoration: none; }
+    /* PILARES DOS MESTRES DA COMUNICAÇÃO */
+    .masters-section {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .masters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+    .master-card {
+      background: var(--sand-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .master-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--rose-quartz);
+    }
+    .master-badge {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--rose-deep);
+      background: var(--rose-light);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .master-card h3 { font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--sage-deep); }
+    .master-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+    .master-card.featured-hellinger {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--sage-light) 100%);
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow-md);
+      padding: 2.6rem;
+    }
+    .master-card.featured-hellinger h3 {
+      font-size: 2rem;
+      color: var(--sage-deep);
+      margin-bottom: 0.8rem;
+    }
+    .master-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--sage-deep);
+      border-left: 2px solid var(--gold);
+      padding-left: 12px;
+    }
 
-  /* RESPONSIVO */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero h1 { font-size: 2.5rem; }
-    .sobre-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .sobre-img { height: 350px; }
-  }
-</style>
+    /* FILTRO INTERATIVO: O QUE VOCÊ BUSCA */
+    .interactive-guide {
+      background: linear-gradient(180deg, var(--sand-bg) 0%, var(--sage-light) 100%);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      margin: 2rem 0 4rem;
+      text-align: center;
+      border: 1px solid rgba(63, 97, 76, 0.15);
+      box-shadow: var(--shadow-sm);
+    }
+    .guide-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    .guide-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      padding: 0.7rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .guide-btn.active, .guide-btn:hover {
+      background: var(--sage-deep);
+      color: #FFFFFF;
+      border-color: var(--sage-deep);
+    }
+    .guide-result-box {
+      background: #FFFFFF;
+      max-width: 680px;
+      margin: 1.5rem auto 0;
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--rose-deep);
+      text-align: left;
+    }
+    .guide-result-box h4 { font-size: 1.5rem; color: var(--rose-deep); margin-bottom: 0.5rem; }
+    .guide-result-box p { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+
+    /* GRADE DE TERAPIAS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 2.2rem 1.8rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--rose-deep);
+    }
+    .service-icon {
+      width: 58px; height: 58px;
+      background: var(--sage-light);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 1.2rem;
+      color: var(--sage-deep);
+    }
+    .service-card h3 { font-size: 1.6rem; color: var(--sage-deep); margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.93rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .service-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .service-link:hover { color: var(--sage-deep); }
+
+    /* MODALIDADES ESPECIAIS */
+    .modalities-section { background: #FFFFFF; }
+    .modality-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 2rem;
+    }
+    .modality-card {
+      background: var(--sand-bg);
+      border-radius: var(--radius-md);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-soft);
+      position: relative;
+    }
+    .modality-tag {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: var(--gold-light);
+      color: #7A5716;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+    }
+    .modality-card h3 { font-size: 1.8rem; margin-bottom: 0.8rem; color: var(--sage-deep); }
+    .modality-card p { font-size: 0.96rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    /* DIÁRIO INSTAGRAM / SHOWROOM DE EXCELÊNCIA */
+    .instagram-section { background: var(--sand-bg); }
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .post-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+    .post-header {
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .post-avatar {
+      width: 38px; height: 38px;
+      background: var(--sage-deep);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .post-author { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .post-author span { display: block; font-size: 11px; color: var(--text-muted); font-weight: 400; }
+    .post-visual {
+      background: linear-gradient(135deg, var(--sage-deep) 0%, var(--rose-deep) 100%);
+      color: #FFFFFF;
+      padding: 2.5rem 1.8rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 180px;
+      position: relative;
+    }
+    .post-visual h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+    .post-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .post-snippet {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+    .post-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-soft);
+      padding-top: 1rem;
+    }
+    .btn-copy-caption {
+      background: transparent;
+      border: 1px solid var(--border-soft);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-copy-caption:hover {
+      background: var(--sage-light);
+      color: var(--sage-deep);
+      border-color: var(--sage);
+    }
+    .post-wa-btn {
+      color: var(--sage-deep);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .post-wa-btn:hover { color: var(--rose-deep); }
+
+    /* SOBRE ELENA ABERASTAIN */
+    .about-section { background: #FFFFFF; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-frame {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid #FFFFFF;
+    }
+    .about-badge-card {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: #FFFFFF;
+      padding: 1.5rem 1.8rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--gold);
+      max-width: 260px;
+    }
+    .about-badge-card strong { display: block; font-size: 18px; color: var(--sage-deep); }
+    .about-badge-card span { font-size: 13px; color: var(--text-muted); }
+    .about-text h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+    .about-text p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+
+    /* LOCALIZAÇÃO E CONTATO */
+    .location-section {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--sand-bg) 100%);
+    }
+    .location-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .location-info h3 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--sage-deep); }
+    .address-highlight {
+      background: var(--sage-light);
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--sage-deep);
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--sage);
+    }
+    .location-benefits { list-style: none; margin-bottom: 2rem; }
+    .location-benefits li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+    .location-map-mock {
+      background: #EAE6DE;
+      height: 320px;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      border: 1px dashed var(--border-soft);
+    }
+
+    /* CTA FINAL */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--sage-deep) 0%, #17271E 100%);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 6rem 1.5rem;
+      position: relative;
+    }
+    .cta-banner h2 { font-size: 3.2rem; color: #FFFFFF; margin-bottom: 1.2rem; }
+    .cta-banner p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.85); max-width: 650px; margin: 0 auto 2.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: #141C16;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 3.5rem 1.5rem 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      max-width: 1180px;
+      margin: 0 auto 2.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-col h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul li a { color: rgba(255, 255, 255, 0.7); }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+    }
+
+    /* BOTÃO FLUTUANTE DE WHATSAPP COM ACOLHIMENTO */
+    .floating-wa {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .floating-wa-btn {
+      width: 62px;
+      height: 62px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      color: #FFFFFF;
+      font-size: 32px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pulse-wa 2.5s infinite;
+    }
+    .floating-wa-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+    .floating-wa-msg {
+      background: #FFFFFF;
+      color: var(--text-dark);
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+    .floating-wa-msg span {
+      width: 8px; height: 8px;
+      background: #25D366;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    @keyframes pulse-wa {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2.8rem; }
+      .about-grid, .location-card, .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-menu { display: none; }
+      .about-img-frame { height: 360px; }
+      .floating-wa-msg { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <nav>
-    <a href="#" class="logo">Raíces <em>del</em> Amor</a>
-    <ul class="nav-links">
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#servicos">Terapias</a></li>
-      <li><a href="#espaco">Espaço</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1>Algo em você sabe que<br><strong>é hora de voltar para si.</strong></h1>
-    <p>Espaço terapêutico de cura, autoconhecimento e transformação profunda. Sua jornada de luz começa aqui.</p>
-    <a href="https://forms.gle/UZgTUjM5ECPYgUFv8" target="_blank" class="btn-primary">🌿 Iniciar minha jornada</a>
-  </div>
-</section>
-
-<!-- SOBRE -->
-<section id="sobre" class="container">
-  <div class="sobre-grid">
-    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070&auto=format&fit=crop" alt="Elena Terapeuta" class="sobre-img">
-    <div class="sobre-text">
-      <h2 class="section-title">Acolhimento sem julgamentos</h2>
-      <p>Com anos de experiência em terapias holísticas e desenvolvimento humano, a terapeuta Elena criou o Raíces del Amor para ser um porto seguro para quem busca reencontrar o próprio equilíbrio.</p>
-      <p>Aqui, o atendimento é humanizado, sigiloso e profundo. Através do Reiki, Constelação Familiar e processos de autoconhecimento, ajudamos você a desbloquear traços, curar feridas e florescer para a sua verdadeira essência.</p>
-      <p><em>"Cuidar de si não é egoísmo — é a raiz de onde nasce o amor pelos outros."</em></p>
+  <!-- BARRA SUPERIOR DE ACOLHIMENTO -->
+  <div class="top-bar">
+    <div class="top-bar-location">
+      📍 <span>Rua Felipe Achê, 567 · Bairro São Luiz, Ribeirão Preto - SP</span>
+    </div>
+    <div class="top-bar-contact">
+      <span>Acolhimento Humanizado com Elena Aberastain:</span>
+      <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Vim%20pelo%20site%20Ra%C3%ADces%20del%20Amor%20e%20gostaria%20de%20um%20acolhimento%20terap%C3%AAutico." target="_blank">
+        💬 (16) 99222-1496
+      </a>
     </div>
   </div>
-</section>
 
-<!-- SERVIÇOS -->
-<section id="servicos" class="servicos">
-  <div class="container">
-    <h2 class="section-title">Nossas Terapias</h2>
-    <p class="section-subtitle">Caminhos ancestrais e modernos para o seu bem-estar físico, mental e espiritual.</p>
-    <div class="servicos-grid">
-      <div class="servico-card">
-        <div class="servico-icon">🙌</div>
-        <h3>Reiki Usui & Gendai</h3>
-        <p>Reequilíbrio energético profundo, dissolvendo bloqueios e promovendo relaxamento e cura física/emocional.</p>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#" class="brand">
+        <span class="brand-logo">Raíces <em>del</em> Amor</span>
+        <span class="brand-tagline">Espaço Terapêutico · Ribeirão Preto</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#sobre">Elena & O Espaço</a></li>
+        <li><a href="#terapias">Terapias</a></li>
+        <li><a href="#mestres">Nossa Filosofia</a></li>
+        <li><a href="#modalidades">Presencial & Domiciliar</a></li>
+        <li><a href="#diario">Diário & Feed</a></li>
+        <li><a href="#localizacao">Como Chegar</a></li>
+      </ul>
+      <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Gostaria%20de%20agendar%20um%20atendimento%20no%20Espa%C3%A7o%20Ra%C3%ADces%20del%20Amor." target="_blank" class="btn-header-wa">
+        💬 Agendar Consulta
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span>🌿</span> Refúgio de Cura, Autoconhecimento & Equilíbrio Bioenergético
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">🌳</div>
-        <h3>Constelação Familiar</h3>
-        <p>Método de Bert Hellinger para identificar e curar padrões sistêmicos e ancestrais que afetam sua vida.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icon">🦶</div>
-        <h3>Reflexologia Podal</h3>
-        <p>Técnica de massagem nos pontos reflexos dos pés que estimula a auto-cura e alivia tensões do corpo.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icon">🔮</div>
-        <h3>Autoconhecimento</h3>
-        <p>Processo terapêutico guiado para desenvolvimento pessoal, clareza mental e despertar da consciência.</p>
+      <h1>
+        Algo em você sabe que<br>
+        <strong>é hora de voltar para si.</strong>
+      </h1>
+      <p class="hero-p">
+        Unimos a ciência bioenergética do Biomagnetismo Médico (Dr. Isaac Goiz), a sabedoria sistêmica das Constelações e terapias integrativas reconhecidas para restaurar sua saúde física, paz mental e harmonia familiar.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Gostaria%20de%20conversar%20sobre%20meu%20momento%20e%20agendar%20um%20atendimento." target="_blank" class="btn-main">
+          💬 Falar com Elena no WhatsApp
+        </a>
+        <a href="#terapias" class="btn-secondary">
+          ✨ Conhecer Terapias
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- GALERIA / ESPAÇO -->
-<section id="espaco" class="container">
-  <h2 class="section-title">Nosso Espaço</h2>
-  <p class="section-subtitle">Um ambiente preparado com amor para proporcionar o seu acolhimento e segurança.</p>
-  <div class="galeria-grid">
-    <!-- Substitua os links abaixo pelas fotos reais do espaço -->
-    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=800&auto=format&fit=crop" alt="Sala de Reiki" class="galeria-item">
-    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce7db054?q=80&w=800&auto=format&fit=crop" alt="Maca de Terapia" class="galeria-item">
-    <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?q=80&w=800&auto=format&fit=crop" alt="Espaço de Meditação" class="galeria-item">
-    <img src="https://images.unsplash.com/photo-1612337544246-914b3a4d9331?q=80&w=800&auto=format&fit=crop" alt="Decoração Espaço" class="galeria-item">
-  </div>
-</section>
+  <!-- GUIA INTERATIVO: QUAL TERAPIA VOCÊ PRECISA -->
+  <section style="padding-top: 0; margin-top: -2rem;">
+    <div class="container">
+      <div class="interactive-guide">
+        <span class="section-eyebrow">Diagnóstico Rápido de Acolhimento</span>
+        <h3 style="font-size: 2.2rem; color: var(--sage-deep); margin-bottom: 0.5rem;">O que o seu corpo e o seu coração pedem hoje?</h3>
+        <p style="color: var(--text-muted); font-size: 1rem;">Clique no sintoma abaixo para descobrir a terapia integrativa mais indicada para você:</p>
+        
+        <div class="guide-tabs">
+          <button class="guide-btn active" onclick="showGuide('bio')">🧲 Dores Físicas & Inflamações</button>
+          <button class="guide-btn" onclick="showGuide('constelacao')">🌳 Padrões Familiares & Relacionamentos</button>
+          <button class="guide-btn" onclick="showGuide('reiki')">🌸 Ansiedade, Estresse & Insônia</button>
+          <button class="guide-btn" onclick="showGuide('arcturiana')">🌌 Cansaço Energético & Desânimo</button>
+          <button class="guide-btn" onclick="showGuide('domiciliar')">🏡 Paciente Idoso ou Acamado</button>
+        </div>
 
-<!-- CTA FINAL -->
-<section id="contato" class="cta-final">
-  <div class="container">
-    <h2 class="section-title">Pronta para dar o primeiro passo?</h2>
-    <p>Preencha nosso formulário de intenção. É rápido, sigiloso e o primeiro passo para a sua transformação.</p>
-    <a href="https://forms.gle/UZgTUjM5ECPYgUFv8" target="_blank" class="btn-primary">🌿 Preencher Formulário</a>
-    <br><br>
-    <a href="https://wa.me/5516992221496?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" style="color: var(--blush); text-decoration: underline;">ou fale com a Elena no WhatsApp</a>
-  </div>
-</section>
+        <div id="guide-result" class="guide-result-box">
+          <h4 id="guide-title">Biomagnetismo Médico (Método Dr. Isaac Goiz Durán)</h4>
+          <p id="guide-desc">Terapia não-invasiva que utiliza ímãs de intensidade terapêutica para restaurar o equilíbrio do pH celular. Ideal para dores musculares crônicas, enxaquecas, distúrbios digestivos e fortalecimento imunológico.</p>
+          <a id="guide-link" href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Gostaria%20de%20saber%20mais%20sobre%20a%20sess%C3%A3o%20de%20Biomagnetismo%20M%C3%A9dico." target="_blank" class="btn-main" style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">
+            💬 Conversar sobre esta terapia no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2024 Raíces del Amor · Espaço Terapêutico · Ribeirão Preto, SP</p>
-  <p>Ponte para a Luz · <a href="mailto:elenaexad@hotmail.com">elenaexad@hotmail.com</a></p>
-</footer>
+  <!-- TERAPIAS DISPONÍVEIS -->
+  <section id="terapias" class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Cuidado Completo & Integrativo</span>
+      <h2 class="section-title">Nossas Terapias</h2>
+      <p class="section-desc">Caminhos ancestrais e bioenergéticos para o bem-estar de homens, mulheres, idosos, crianças e jovens.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- 1. Biomagnetismo -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🧲</div>
+          <h3>Biomagnetismo Médico</h3>
+          <p>Método do Dr. Isaac Goiz Durán. Através do rastreio bioenergético e uso de ímãs terapêuticos, equilibramos o pH do organismo, neutralizando vírus, bactérias e aliviando dores inflamatórias.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20Biomagnetismo%20M%C3%A9dico." target="_blank" class="service-link">Agendar Sessão &rarr;</a>
+      </div>
+
+      <!-- 2. Constelação Familiar -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🌳</div>
+          <h3>Constelação Familiar</h3>
+          <p>Abordagem sistêmica que traz à luz lealdades invisíveis, desfazendo repetições inconscientes de sofrimento em relacionamentos, finanças e na saúde. Presencial e Online.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20Constela%C3%A7%C3%A3o%20Familiar." target="_blank" class="service-link">Agendar Constelação &rarr;</a>
+      </div>
+
+      <!-- 3. Reiki e Formações -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🙌</div>
+          <h3>Aplicação & Formação em Reiki</h3>
+          <p>Canalização da Energia Vital Universal (Usui e Gendai) para dissolução de bloqueios, acalento do sistema nervoso e regeneração. Cursos de Nível 1 ao Mestrado.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20Reiki%20(sess%C3%A3o%20ou%20curso)." target="_blank" class="service-link">Sessões & Cursos &rarr;</a>
+      </div>
+
+      <!-- 4. Reflexologia Podal -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🦶</div>
+          <h3>Reflexologia Podal</h3>
+          <p>Estímulo preciso nos pontos reflexos dos pés conectados a cada órgão do corpo humano. Desintoxicação, alívio de cefaleias, diminuição de edemas e relaxamento absoluto.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20Reflexologia%20Podal." target="_blank" class="service-link">Agendar Reflexologia &rarr;</a>
+      </div>
+
+      <!-- 5. Cura Arcturiana & Multidimensional -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🌌</div>
+          <h3>Cura Arcturiana & Multidimensional</h3>
+          <p>Trabalho quântico de alta frequência vibracional. Limpeza de cordões energéticos desarmônicos, elevação de padrão e alinhamento dos corpos sutis.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Cura%20Arcturiana." target="_blank" class="service-link">Agendar Alinhamento &rarr;</a>
+      </div>
+
+      <!-- 6. Radiestesia & Mesa Radiônica -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🔮</div>
+          <h3>Radiestesia & Mesa Radiônica</h3>
+          <p>Medição e transmutação de frequências telúricas e bioenergéticas em pessoas, lares e empresas através de gráficos sagrados e pêndulo.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20harmoniza%C3%A7%C3%A3o%20com%20Radiestesia." target="_blank" class="service-link">Harmonizar Frequências &rarr;</a>
+      </div>
+
+      <!-- 7. CNV & Rodas de Convivência -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🕊️</div>
+          <h3>Comunicação Não-Violenta (CNV)</h3>
+          <p>Vivências práticas para transformar conflitos familiares e profissionais em diálogos compassivos, conectando necessidades autênticas com assertividade.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20CNV%20e%20autoconhecimento." target="_blank" class="service-link">Saiba Mais &rarr;</a>
+      </div>
+
+      <!-- 8. Valorização da Vida -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon">🌱</div>
+          <h3>Encontros de Valorização da Vida</h3>
+          <p>Encontros mensais e círculos de acolhimento mútuo para nutrir a alma, resgatar a esperança e celebrar a beleza da existência em comunidade.</p>
+        </div>
+        <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20participar%20dos%20encontros%20mensais." target="_blank" class="service-link">Participar da Roda &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OS MESTRES DA NOSSA COMUNICAÇÃO -->
+  <section id="mestres" class="masters-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Padrão de Excelência & Consciência</span>
+        <h2 class="section-title">A Matriz dos Nossos Princípios</h2>
+        <p class="section-desc">Inspirados em grandes mestres da comunicação, amor incondicional e ciência vibracional para oferecer o mais puro acolhimento humano.</p>
+      </div>
+
+      <div class="masters-grid">
+        <!-- BERT HELLINGER: A BASE PRIMORDIAL DE RAÍCES DEL AMOR -->
+        <div class="master-card featured-hellinger">
+          <span class="master-badge" style="background: var(--gold-light); color: #7A5716;">🌿 A Base Primordial de Nossas Raízes</span>
+          <h3>Bert Hellinger · As Ordens do Amor & Constelações Familiares</h3>
+          <p>
+            A verdadeira raiz que dá vida, significado e sustentação ao <strong>Espaço Raíces del Amor</strong>. Bert Hellinger nos ensinou que não existem frutos sadios nem asas na vida sem raízes reconciliadas e honradas. Toda a nossa prática é alicerçada nas três leis sistêmicas invioláveis: o <strong>Direito de Pertencer</strong> (onde ninguém é excluído), a <strong>Ordem de Precedência</strong> (honrando com profunda reverência os pais e todos os antepassados que vieram antes) e o <strong>Equilíbrio entre Dar e Receber</strong>. Quando respeitamos a ordem sagrada, o amor finalmente flui, as repetições de dor cessam e a alma descansa em paz e cura.
+          </p>
+          <div class="master-quote">
+            "O amor preenche o que a ordem abarca. A ordem precede o amor, e o amor só pode se desenvolver dentro da ordem."
+          </div>
+        </div>
+
+        <div class="master-card">
+          <span class="master-badge">Empatia Sem Julgamento</span>
+          <h3>Marshall Rosenberg (CNV)</h3>
+          <p>Toda dor e agressividade é um pedido de socorro de uma necessidade não atendida. Ouvimos com o coração aberto, sem preconceitos nem rótulos.</p>
+          <div class="master-quote">"A empatia reside na habilidade de estar presente sem opinião prévia."</div>
+        </div>
+
+        <div class="master-card">
+          <span class="master-badge">Paz & Mansidão</span>
+          <h3>Santa Teresa D'Ávila</h3>
+          <p>A determinação suave e o sossego da alma que lembram que nada deve perturbar quem está ancorado na verdade e na paciência transformadora.</p>
+          <div class="master-quote">"Nada te turbe, nada te espante... quem a Deus tem, nada lhe falta."</div>
+        </div>
+
+        <div class="master-card">
+          <span class="master-badge">Acolhimento Nobre</span>
+          <h3>Dale Carnegie</h3>
+          <p>Tratar cada pessoa pelo nome próprio com escuta autêntica, reconhecendo o valor sagrado de cada história de vida.</p>
+          <div class="master-quote">"Fazer o outro se sentir verdadeiramente acolhido e importante."</div>
+        </div>
+
+        <div class="master-card">
+          <span class="master-badge">Ciência Vibracional</span>
+          <h3>Nikola Tesla</h3>
+          <p>Compreensão física de que o organismo humano é um campo de frequências que pode ser reequilibrado por meio do biomagnetismo e energia vital.</p>
+          <div class="master-quote">"Se você quer entender o universo, pense em energia, frequência e vibração."</div>
+        </div>
+
+        <div class="master-card">
+          <span class="master-badge">Sabedoria Sistêmica</span>
+          <h3>Maria Gorjão Henriques</h3>
+          <p>O amor sistêmico que cura através da inclusão, honrando os antepassados e concedendo um lugar respeitoso a cada membro da família.</p>
+          <div class="master-quote">"O amor que cura quando tudo ganha o seu devido lugar no coração."</div>
+        </div>
+
+        <div class="master-card">
+          <span class="master-badge">Amor Incondicional</span>
+          <h3>René Mey</h3>
+          <p>A presença compassiva desprovida de ego, permitindo que a frequência pura de amor ative a capacidade regenerativa das células.</p>
+          <div class="master-quote">"A paz verdadeira e o amor silencioso são o maior remédio da alma."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALIDADES DE ATENDIMENTO -->
+  <section id="modalidades" class="modalities-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Aonde Você Precisar</span>
+        <h2 class="section-title">Formatos de Atendimento</h2>
+        <p class="section-desc">Cuidado humanizado e flexível para atender sua rotina e momento de vida.</p>
+      </div>
+
+      <div class="modality-box">
+        <div class="modality-card">
+          <span class="modality-tag">Ribeirão Preto</span>
+          <h3>Presencial no Espaço</h3>
+          <p>Salas climatizadas, silenciosas, decoradas com elementos naturais e aromaterapia, preparadas na Rua Felipe Achê, 567 - Bairro São Luiz.</p>
+          <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20atendimento%20presencial%20no%20consult%C3%B3rio." target="_blank" class="btn-main" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
+            Agendar Presencial
+          </a>
+        </div>
+
+        <div class="modality-card">
+          <span class="modality-tag">Brasil & Exterior</span>
+          <h3>Teleterapia Online</h3>
+          <p>Sessões de Constelação Sistêmica, Mesa Radiônica e Terapias Multidimensionais com total precisão vibracional no conforto da sua residência.</p>
+          <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20atendimento%20terap%C3%AAutico%20online." target="_blank" class="btn-main" style="padding: 0.6rem 1.4rem; font-size: 0.9rem; background: var(--sage);">
+            Agendar Online
+          </a>
+        </div>
+
+        <div class="modality-card" style="border: 2px solid var(--rose-quartz);">
+          <span class="modality-tag" style="background: var(--rose-light); color: var(--rose-deep);">Cuidado Nobre</span>
+          <h3>Domiciliar & Hospitalar</h3>
+          <p>Atendimento ético e delicado com Biomagnetismo e Reiki para pessoas acamadas, idosos com mobilidade reduzida ou pacientes em hospitais.</p>
+          <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimento%20domiciliar%20ou%20hospitalar." target="_blank" class="btn-main" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
+            Solicitar Visita Especial
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIÁRIO RAÍCES & FEED DO INSTAGRAM -->
+  <section id="diario" class="instagram-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Reflexões & Sabedoria Viva</span>
+        <h2 class="section-title">Diário Raíces del Amor</h2>
+        <p class="section-desc">Acompanhe nossas publicações diárias no Instagram e Facebook com reflexões, orientações de autocuidado e saúde.</p>
+      </div>
+
+      <div class="feed-grid">
+        <!-- Post 1: Biomagnetismo -->
+        <div class="post-card">
+          <div class="post-header">
+            <div class="post-avatar">RA</div>
+            <div class="post-author">
+              @espacoraicesdelamor
+              <span>Biomagnetismo & Saúde</span>
+            </div>
+          </div>
+          <div class="post-visual" style="background: linear-gradient(135deg, #243D2F, #3F614C);">
+            <h4>"Dores sem explicação ou cansaço constante? Conheça o Biomagnetismo Médico."</h4>
+          </div>
+          <div class="post-body">
+            <p class="post-snippet">
+              Você sabia que muitas inflamações e dores crônicas se desenvolvem quando o pH do organismo entra em desequilíbrio? O par biomagnético restaura o equilíbrio eletromagnético do corpo...
+            </p>
+            <div class="post-actions">
+              <button class="btn-copy-caption" onclick="copyCaption(1)">📋 Copiar Mensagem</button>
+              <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20li%20a%20publica%C3%A7%C3%A3o%20sobre%20Biomagnetismo%20e%20gostaria%20de%20agendar." target="_blank" class="post-wa-btn">💬 Quero Agendar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 2: Constelação -->
+        <div class="post-card">
+          <div class="post-header">
+            <div class="post-avatar">RA</div>
+            <div class="post-author">
+              @espacoraicesdelamor
+              <span>Constelação Sistêmica</span>
+            </div>
+          </div>
+          <div class="post-visual" style="background: linear-gradient(135deg, #5C2035, #8C4052);">
+            <h4>"Por que certas dores e bloqueios parecem se repetir na sua história familiar?"</h4>
+          </div>
+          <div class="post-body">
+            <p class="post-snippet">
+              A Constelação Familiar traz à luz lealdades invisíveis do sistema ancestral. Ao olharmos com honra e respeito para nossas raízes, podemos devolver o que não nos pertence e viver com plenitude...
+            </p>
+            <div class="post-actions">
+              <button class="btn-copy-caption" onclick="copyCaption(2)">📋 Copiar Mensagem</button>
+              <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20li%20o%20post%20sobre%20Constela%C3%A7%C3%A3o%20Familiar%20e%20quero%20constelar." target="_blank" class="post-wa-btn">💬 Quero Constelar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 3: Reiki & Formações -->
+        <div class="post-card">
+          <div class="post-header">
+            <div class="post-avatar">RA</div>
+            <div class="post-author">
+              @espacoraicesdelamor
+              <span>Reiki & Energia Vital</span>
+            </div>
+          </div>
+          <div class="post-visual" style="background: linear-gradient(135deg, #C6933B, #8C611B);">
+            <h4>"Quando foi a última vez que você silenciou a mente e recarregou sua energia?"</h4>
+          </div>
+          <div class="post-body">
+            <p class="post-snippet">
+              O Reiki acalma o sistema nervoso, alivia insônia e recarrega seus chakras. Conheça também nossos Cursos de Formação em Reiki do Nível 1 ao Mestrado em Ribeirão Preto...
+            </p>
+            <div class="post-actions">
+              <button class="btn-copy-caption" onclick="copyCaption(3)">📋 Copiar Mensagem</button>
+              <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20sess%C3%B5es%20ou%20cursos%20de%20Reiki." target="_blank" class="post-wa-btn">💬 Quero Saber Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE ELENA ABERASTAIN -->
+  <section id="sobre" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop" alt="Elena Aberastain - Terapeuta" class="about-img-frame">
+          <div class="about-badge-card">
+            <strong>Elena Aberastain</strong>
+            <span>Terapeuta Integrativa & Facilitadora Sistêmica</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-eyebrow">Cuidado Humanizado & Vocação</span>
+          <h2>Acolhimento profundo e sem julgamentos.</h2>
+          <p>
+            Com anos de dedicação ao desenvolvimento humano, a terapeuta **Elena Aberastain** idealizou o **Espaço Raíces del Amor** como um refúgio acolhedor e seguro para homens, mulheres, idosos e jovens que buscam reencontrar a saúde e o propósito.
+          </p>
+          <p>
+            Aqui, cada ser humano é acolhido em sua totalidade: biológica, emocional, ancestral e sutil. Nossos atendimentos combinam a precisão do Biomagnetismo com a profundidade da Constelação Familiar e a ternura do Reiki.
+          </p>
+          <blockquote style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--rose-deep); border-left: 3px solid var(--rose-quartz); padding-left: 15px; margin: 1.5rem 0;">
+            <em>"Cuidar de si não é egoísmo — é a raiz fecunda de onde brota a verdadeira capacidade de amar a vida e os outros."</em>
+          </blockquote>
+          <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Gostaria%20de%20conversar%20diretamente%20com%20voc%C3%AA." target="_blank" class="btn-main">
+            💬 Conversar com Elena no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO EM RIBEIRÃO PRETO -->
+  <section id="localizacao" class="location-section">
+    <div class="container">
+      <div class="location-card">
+        <div class="location-info">
+          <span class="section-eyebrow">Localização Nobre & Privilegiada</span>
+          <h3>Nosso Espaço em Ribeirão Preto</h3>
+          <div class="address-highlight">
+            🏡 Rua Felipe Achê, 567 · Bairro São Luiz<br>
+            Ribeirão Preto - SP · CEP 14020-330
+          </div>
+          <ul class="location-benefits">
+            <li>🌿 Região tranquila, arborizada e segura no Jardim São Luiz</li>
+            <li>🚗 Fácil estacionamento em frente ao espaço</li>
+            <li>📍 Próximo às Avenidas Portugal, Independência e Maurílio Biagi</li>
+            <li>☕ Ambiente acolhedor com chás terapêuticos e aromatização</li>
+          </ul>
+          <a href="https://maps.google.com/?q=Rua+Felipe+Ache+567+Ribeirao+Preto" target="_blank" class="btn-secondary" style="display: inline-block;">
+            🗺️ Abrir no Google Maps / Waze
+          </a>
+        </div>
+        <div class="location-map-mock">
+          <div style="font-size: 40px; margin-bottom: 10px;">📍</div>
+          <h4 style="font-size: 1.4rem; color: var(--sage-deep); margin-bottom: 5px;">Rua Felipe Achê, 567</h4>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Jardim São Luiz · Ribeirão Preto - SP</p>
+          <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Estou%20a%20caminho%20do%20espa%C3%A7o%20ou%20gostaria%20de%20refer%C3%AAncia." target="_blank" class="btn-main" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
+            Pedir Localização no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER FINAL -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Pronta(o) para dar o primeiro passo?</h2>
+      <p>
+        O tempo da sua cura e paz de espírito é sagrado. Envie uma mensagem no WhatsApp da Elena Aberastain e reserve seu horário com todo o acolhimento e discrição.
+      </p>
+      <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Sinto%20que%20%C3%A9%20o%20meu%20momento%20de%20cuidar%20de%20mim%20no%20Ra%C3%ADces%20del%20Amor." target="_blank" class="btn-main" style="font-size: 1.15rem; padding: 1.1rem 2.8rem; background: #25D366; color: #FFFFFF; box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);">
+        💬 Conversar com Elena no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 style="font-size: 1.6rem; color: #FFFFFF;">Raíces del Amor</h4>
+        <p style="margin-bottom: 1rem; max-width: 380px;">
+          Espaço Terapêutico dedicado ao desenvolvimento humano, equilíbrio bioenergético, autocura e evolução amorosa.
+        </p>
+        <p><strong>Coordenação:</strong> Elena Aberastain</p>
+        <p><strong>Endereço:</strong> Rua Felipe Achê, 567 - Bairro São Luiz, Ribeirão Preto - SP</p>
+      </div>
+      <div class="footer-col">
+        <h4>Terapias</h4>
+        <ul>
+          <li><a href="#terapias">Biomagnetismo Médico</a></li>
+          <li><a href="#terapias">Constelação Familiar</a></li>
+          <li><a href="#terapias">Aplicação & Formação Reiki</a></li>
+          <li><a href="#terapias">Reflexologia Podal</a></li>
+          <li><a href="#terapias">Cura Arcturiana</a></li>
+          <li><a href="#terapias">Radiestesia & CNV</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato Direto</h4>
+        <ul>
+          <li><a href="https://wa.me/5516992221496" target="_blank">WhatsApp: (16) 99222-1496</a></li>
+          <li><a href="mailto:elenaexad@hotmail.com">elenaexad@hotmail.com</a></li>
+          <li><a href="#modalidades">Atendimento Domiciliar</a></li>
+          <li><a href="#modalidades">Atendimento Hospitalar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Espaço Terapêutico Raíces del Amor · Todos os direitos reservados · Ribeirão Preto - SP</p>
+      <p style="margin-top: 5px; opacity: 0.6;">Padrão de Comunicação de Excelência · CNV · Santa Teresa · Dale Carnegie · Nikola Tesla · René Mey</p>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
+  <a href="https://wa.me/5516992221496?text=Ol%C3%A1%2C%20Elena!%20Vim%20pelo%20site%20Ra%C3%ADces%20del%20Amor%20e%20gostaria%20de%20um%20acolhimento%20terap%C3%AAutico." target="_blank" class="floating-wa" title="Conversar no WhatsApp">
+    <div class="floating-wa-msg">
+      <span></span> Elena Aberastain está online
+    </div>
+    <div class="floating-wa-btn">
+      💬
+    </div>
+  </a>
+
+  <!-- SCRIPTS INTERATIVOS -->
+  <script>
+    const guideData = {
+      bio: {
+        title: "Biomagnetismo Médico (Dr. Isaac Goiz Durán)",
+        desc: "Rastreio bioenergético e uso de ímãs terapêuticos de alta precisão para neutralizar o pH celular, aliviar dores agudas/crônicas, tratar distúrbios digestivos e apoiar o sistema imunológico.",
+        msg: "Olá, Elena! Gostaria de saber mais sobre a sessão de Biomagnetismo Médico."
+      },
+      constelacao: {
+        title: "Constelação Familiar e Sistêmica",
+        desc: "Olhar compassivo e profundo para desatar repetições inconscientes de sofrimento em relacionamentos, finanças, bloqueios profissionais e dinâmicas familiares. Atendimento Presencial e Online.",
+        msg: "Olá, Elena! Gostaria de agendar uma sessão de Constelação Familiar."
+      },
+      reiki: {
+        title: "Aplicação e Formação em Reiki (Usui & Gendai)",
+        desc: "Equilíbrio profundo da energia vital através da imposição das mãos. Alívio imediato de ansiedade, estresse agudo, insônia e restabelecimento da paz interior.",
+        msg: "Olá, Elena! Gostaria de informações sobre sessões e cursos de Reiki."
+      },
+      arcturiana: {
+        title: "Cura Arcturiana, Terapias Multidimensionais e Radiestesia",
+        desc: "Alinhamento quântico das frequências sutis, desobstrução de energias densas acumuladas e elevação imediata do padrão vibratório. Muito procurado para atendimentos online.",
+        msg: "Olá, Elena! Tenho interesse em alinhamento quântico com Cura Arcturiana e Radiestesia."
+      },
+      domiciliar: {
+        title: "Atendimento Terapêutico Domiciliar e Hospitalar",
+        desc: "Visita humanizada com Biomagnetismo suave, Reiki e Toque Terapêutico para idosos, pessoas acamadas ou pacientes em recuperação hospitalar em Ribeirão Preto.",
+        msg: "Olá, Elena! Gostaria de informações sobre atendimento domiciliar ou hospitalar."
+      }
+    };
+
+    function showGuide(key) {
+      document.querySelectorAll('.guide-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      const item = guideData[key];
+      document.getElementById('guide-title').innerText = item.title;
+      document.getElementById('guide-desc').innerText = item.desc;
+      document.getElementById('guide-link').href = `https://wa.me/5516992221496?text=${encodeURIComponent(item.msg)}`;
+    }
+
+    function copyCaption(postNum) {
+      const texts = {
+        1: "Você sabia que muitas dores crônicas decorrem do desequilíbrio de pH do corpo? O Biomagnetismo Médico equilibra sua bioenergia com ímãs terapêuticos. Venha conhecer o Espaço Raíces del Amor na Rua Felipe Achê, 567, Ribeirão Preto. Fale no WhatsApp: (16) 99222-1496! #biomagnetismo #ribeiraopreto #raicesdelamor",
+        2: "Por que certos padrões de dor se repetem na sua vida? A Constelação Familiar traz clareza para curar suas raízes e viver com leveza. Atendimentos presenciais e online com Elena Aberastain no Espaço Raíces del Amor. WhatsApp: (16) 99222-1496! #constelacaofamiliar #ribeiraopreto",
+        3: "Reiki: silenciar a mente e recarregar a alma. Oferecemos sessões e Formações Completas em Reiki no Bairro São Luiz em Ribeirão Preto. Converse conosco no WhatsApp: (16) 99222-1496! #reikiribeiraopreto #autocuidado #raicesdelamor"
+      };
+      navigator.clipboard.writeText(texts[postNum]).then(() => {
+        alert("Texto da publicação copiado com sucesso! Você pode colar no Instagram ou WhatsApp.");
+      }).catch(() => {
+        alert("Texto selecionado para cópia!");
+      });
+    }
+  </script>
 
 </body>
 </html>
