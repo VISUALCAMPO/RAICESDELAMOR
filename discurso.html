@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discurso da Manhã</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f3e2a9;
+      --gold-dim: rgba(212, 175, 55, 0.25);
+      --bg-dark: #060d18;
+      --text-main: #f1f5f9;
+      --text-muted: #cbd5e1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.09), transparent 35%),
+        radial-gradient(circle at 85% 55%, rgba(139, 92, 246, 0.10), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.06), transparent 40%),
+        linear-gradient(160deg, #050b14 0%, #0b1424 50%, #111e33 100%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra de progresso superior */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      box-shadow: 0 0 10px var(--gold);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Fundo de partículas */
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Seção Inicial (Hero) */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      margin-bottom: 18px;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+      line-height: 1.05;
+      color: var(--gold-light);
+      text-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 28px 0;
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: var(--text-muted);
+      z-index: 2;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-light);
+      opacity: 0.6;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-hint:hover {
+      opacity: 1;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 42px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2.2s infinite ease-in-out;
+    }
+
+    /* Painéis de Conteúdo */
+    .panel {
+      width: min(880px, 90%);
+      margin: 90px auto;
+      padding: clamp(36px, 6vw, 75px);
+      background: rgba(15, 25, 42, 0.45);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+
+      /* Estado inicial para animação de entrada */
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .panel.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .panel-number {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 6px;
+      opacity: 0.85;
+    }
+
+    .panel h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      line-height: 1.2;
+    }
+
+    .panel p {
+      font-weight: 300;
+      line-height: 2;
+      font-size: clamp(1.02rem, 1.3vw, 1.14rem);
+      color: var(--text-main);
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .panel p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* Citações */
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--gold-light);
+      line-height: 1.65;
+      text-align: center;
+      margin: 38px auto;
+      padding: 28px 20px;
+      max-width: 600px;
+      border-top: 1px solid var(--gold-dim);
+      border-bottom: 1px solid var(--gold-dim);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Geometria Sagrada de Fundo */
+    .geometry {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .geometry svg {
+      width: 90%;
+      max-width: 650px;
+      height: auto;
+    }
+
+    .flower {
+      animation: rotate360 280s linear infinite;
+    }
+
+    .metatron {
+      animation: rotate360 200s linear infinite reverse;
+    }
+
+    .yantra {
+      animation: pulse 9s ease-in-out infinite;
+    }
+
+    /* Rodapé */
+    footer {
+      padding: 100px 24px 130px;
+      text-align: center;
+      position: relative;
+    }
+
+    footer h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      color: var(--gold-light);
+      margin-bottom: 20px;
+    }
+
+    footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
+
+    @keyframes rotate360 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(0.6); opacity: 0.3; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* Acessibilidade: reduz movimento se configurado no sistema do usuário */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .flower, .metatron, .yantra, .scroll-line { animation: none; }
+      .panel { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="hero">
+    <span class="hero-eyebrow">Prática Diária de Presença</span>
+    <h1>Discurso da Manhã</h1>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <p>Gratidão &bull; Palavra &bull; Destino &bull; Cuidado</p>
+
+    <a href="#teresa" class="scroll-hint" aria-label="Rolar para o conteúdo">
+      <span>Iniciar</span>
+      <div class="scroll-line"></div>
+    </a>
+  </header>
+
+  <main>
+    <section id="teresa" class="panel">
+      <div class="geometry" aria-hidden="true">
+        <svg class="flower" viewBox="0 0 800 800">
+          <g fill="none" stroke="#d4af37" stroke-width="1.5">
+            <circle cx="400" cy="400" r="120"/>
+            <circle cx="280" cy="400" r="120"/>
+            <circle cx="520" cy="400" r="120"/>
+            <circle cx="340" cy="296" r="120"/>
+            <circle cx="460" cy="296" r="120"/>
+            <circle cx="340" cy="504" r="120"/>
+            <circle cx="460" cy="504" r="120"/>
+            <circle cx="400" cy="400" r="240"/>
+          </g>
+        </svg>
+      </div>
+
+      <span class="panel-number">I. O Centro</span>
+      <h2>Teresa e Gratidão</h2>
+
+      <p>
+        Bom dia, Vida.<br>
+        Bom dia, Fonte de todo bem.<br>
+        Bom dia, consciência que desperta em mim.
+      </p>
+
+      <p>
+        Antes da pressa, eu escolho o centro.
+      </p>
+
+      <blockquote>
+        Tudo passa.<br>
+        Deus permanece.<br>
+        A paciência tudo alcança.<br>
+        Só Deus basta.
+      </blockquote>
+
+      <p>
+        Por isso, agradeço.<br>
+        Agradeço mesmo quando tudo ainda pede ajuste:
+        estou vivo, respirando, capaz de recomeçar.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div class="geometry" aria-hidden="true">
+        <svg class="metatron" viewBox="0 0 800 800">
+          <g fill="none" stroke="#d4af37" stroke-width="1.5">
+            <circle cx="400" cy="400" r="220"/>
+            <circle cx="400" cy="400" r="110"/>
+            <line x1="180" y1="400" x2="620" y2="400"/>
+            <line x1="400" y1="180" x2="400" y2="620"/>
+            <line x1="244" y1="244" x2="556" y2="556"/>
+            <line x1="556" y1="244" x2="244" y2="556"/>
+          </g>
+        </svg>
+      </div>
+
+      <span class="panel-number">II. A Direção</span>
+      <h2>Nietzsche e Destino</h2>
+
+      <p>
+        <em>Amor fati</em>: amor ao destino.
+      </p>
+
+      <p>
+        Mais que suportar o necessário:<br>
+        amá-lo e, a partir dele, criar.
+      </p>
+
+      <p>
+        Que eu me torne quem sou.<br>
+        Que minha força se expresse como serviço.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div class="geometry" aria-hidden="true">
+        <svg class="yantra" viewBox="0 0 800 800">
+          <g fill="none" stroke="#d4af37" stroke-width="1.5">
+            <polygon points="400,130 634,535 166,535"/>
+            <polygon points="400,670 634,265 166,265"/>
+            <circle cx="400" cy="400" r="270"/>
+          </g>
+        </svg>
+      </div>
+
+      <span class="panel-number">III. A Integração</span>
+      <h2>Síntese</h2>
+
+      <p>
+        Hoje uno a confiança de Teresa,
+        a doçura de Coué,
+        o sim de Nietzsche,
+        a gentileza do Reiki
+        e a escuta compassiva da CNV.
+      </p>
+
+      <p>
+        Que minha palavra construa.<br>
+        Que minhas mãos sirvam.<br>
+        Que meu coração permaneça desperto.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Gratidão</h2>
+    <p>
+      Assim é.<br>
+      Assim quero.<br>
+      Assim começo.
+    </p>
+  </footer>
+
+  <script>
+    // 1. Barra de progresso de leitura
+    const progress = document.getElementById('progress');
+
+    function updateProgress() {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total <= 0) {
+        progress.style.width = '0%';
+        return;
+      }
+      const value = Math.min(Math.max(window.scrollY / total, 0), 1);
+      progress.style.width = `${value * 100}%`;
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+
+    // 2. Animação suave de entrada dos painéis (Intersection Observer)
+    const panels = document.querySelectorAll('.panel');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    panels.forEach(panel => observer.observe(panel));
+
+    // 3. Partículas douradas no fundo
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      const oldWidth = width;
+      const oldHeight = height;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+
+      // Reposiciona proporcionalmente ao redimensionar a janela
+      particles.forEach(p => {
+        p.x = (p.x / oldWidth) * width;
+        p.y = (p.y / oldHeight) * height;
+      });
+    });
+
+    const particleCount = Math.min(120, Math.floor((width * height) / 12000));
+    const particles = Array.from({ length: particleCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.8 + 0.6,
+      v: Math.random() * 0.45 + 0.12,
+      alpha: Math.random() * 0.5 + 0.15
+    }));
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        if (!prefersReducedMotion) {
+          p.y -= p.v;
+          if (p.y < -5) {
+            p.y = height + 5;
+            p.x = Math.random() * width;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
+        ctx.fill();
+      });
+
+      if (!prefersReducedMotion) {
+        requestAnimationFrame(drawParticles);
+      }
+    }
+
+    drawParticles();
+  </script>
+</body>
+</html>
