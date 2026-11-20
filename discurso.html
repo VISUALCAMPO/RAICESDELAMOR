@@ -1,513 +1,719 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discurso da Manhã</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --gold: #d4af37;
-      --gold-light: #f3e2a9;
-      --gold-dim: rgba(212, 175, 55, 0.25);
-      --bg-dark: #060d18;
-      --text-main: #f1f5f9;
-      --text-muted: #cbd5e1;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.09), transparent 35%),
-        radial-gradient(circle at 85% 55%, rgba(139, 92, 246, 0.10), transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.06), transparent 40%),
-        linear-gradient(160deg, #050b14 0%, #0b1424 50%, #111e33 100%);
-      color: var(--text-main);
-      overflow-x: hidden;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Barra de progresso superior */
-    #progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      box-shadow: 0 0 10px var(--gold);
-      width: 0%;
-      z-index: 9999;
-      transition: width 0.1s ease-out;
-    }
-
-    /* Fundo de partículas */
-    canvas {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Seção Inicial (Hero) */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 24px;
-      position: relative;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      color: var(--gold);
-      margin-bottom: 18px;
-      opacity: 0.9;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: clamp(3.2rem, 7.5vw, 6.5rem);
-      line-height: 1.05;
-      color: var(--gold-light);
-      text-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
-      z-index: 2;
-    }
-
-    .hero-divider {
-      width: 60px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 28px 0;
-    }
-
-    .hero p {
-      max-width: 700px;
-      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 300;
-      color: var(--text-muted);
-      z-index: 2;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 36px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: var(--gold-light);
-      opacity: 0.6;
-      text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: opacity 0.3s ease;
-    }
-
-    .scroll-hint:hover {
-      opacity: 1;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 42px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollPulse 2.2s infinite ease-in-out;
-    }
-
-    /* Painéis de Conteúdo */
-    .panel {
-      width: min(880px, 90%);
-      margin: 90px auto;
-      padding: clamp(36px, 6vw, 75px);
-      background: rgba(15, 25, 42, 0.45);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border-radius: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 25px 50px -12px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-
-      /* Estado inicial para animação de entrada */
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .panel.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .panel-number {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--gold);
-      margin-bottom: 6px;
-      opacity: 0.85;
-    }
-
-    .panel h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      color: var(--gold-light);
-      margin-bottom: 28px;
-      line-height: 1.2;
-    }
-
-    .panel p {
-      font-weight: 300;
-      line-height: 2;
-      font-size: clamp(1.02rem, 1.3vw, 1.14rem);
-      color: var(--text-main);
-      margin-bottom: 22px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .panel p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    /* Citações */
-    blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      color: var(--gold-light);
-      line-height: 1.65;
-      text-align: center;
-      margin: 38px auto;
-      padding: 28px 20px;
-      max-width: 600px;
-      border-top: 1px solid var(--gold-dim);
-      border-bottom: 1px solid var(--gold-dim);
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Geometria Sagrada de Fundo */
-    .geometry {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0.07;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .geometry svg {
-      width: 90%;
-      max-width: 650px;
-      height: auto;
-    }
-
-    .flower {
-      animation: rotate360 280s linear infinite;
-    }
-
-    .metatron {
-      animation: rotate360 200s linear infinite reverse;
-    }
-
-    .yantra {
-      animation: pulse 9s ease-in-out infinite;
-    }
-
-    /* Rodapé */
-    footer {
-      padding: 100px 24px 130px;
-      text-align: center;
-      position: relative;
-    }
-
-    footer h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: clamp(2.8rem, 6vw, 4.2rem);
-      color: var(--gold-light);
-      margin-bottom: 20px;
-    }
-
-    footer p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-      line-height: 1.8;
-      color: var(--text-muted);
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.04); opacity: 1; }
-    }
-
-    @keyframes rotate360 {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { transform: scaleY(0.6); opacity: 0.3; }
-      50% { transform: scaleY(1); opacity: 1; }
-    }
-
-    /* Acessibilidade: reduz movimento se configurado no sistema do usuário */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .flower, .metatron, .yantra, .scroll-line { animation: none; }
-      .panel { opacity: 1; transform: none; transition: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discurso da Manhã — Raíces del Amor</title>
+<meta name="description" content="Discurso da Manhã — gratidão, palavra, destino e cuidado. Uma jornada contemplativa por Teresa d'Ávila, Coué, Nietzsche, Reiki e CNV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D4AF37;
+  --gold-light:#EFD990;
+  --turquoise:#38BDF8;
+  --violet:#8B5CF6;
+  --glass:rgba(255,255,255,.05);
+  --border:rgba(255,255,255,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  color:#F5F5F4;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(56,189,248,.10), transparent 30%),
+    radial-gradient(circle at 85% 65%, rgba(139,92,246,.11), transparent 32%),
+    radial-gradient(circle at 50% 95%, rgba(212,175,55,.08), transparent 40%),
+    linear-gradient(135deg,#07111f,#0b1627,#0f1d34);
+  overflow-x:hidden;
+  line-height:1.9;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background:radial-gradient(circle at center,transparent 58%,rgba(0,0,0,.42));
+  pointer-events:none;z-index:1;
+}
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,#D4AF37,#EFD990);
+  z-index:9999;
+  box-shadow:0 0 12px rgba(212,175,55,.6);
+  transition:width .15s ease-out;
+}
+canvas#particles{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+}
+/* BACK LINK */
+.back-nav{
+  position:fixed;top:22px;left:22px;z-index:100;
+  padding:10px 20px;
+  background:rgba(7,17,31,.6);
+  backdrop-filter:blur(14px);
+  border:1px solid var(--border);
+  border-radius:999px;
+  text-decoration:none;
+  color:var(--gold-light);
+  font-size:.82rem;letter-spacing:1.5px;
+  transition:.3s;
+}
+.back-nav:hover{background:rgba(212,175,55,.14);border-color:rgba(212,175,55,.5);}
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:120px 24px 80px;
+  position:relative;z-index:2;
+}
+.hero-svg{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(90vw,850px);height:auto;
+  opacity:.11;z-index:0;
+  animation:rotateSlow 340s linear infinite;
+}
+@keyframes rotateSlow{to{transform:translate(-50%,-50%) rotate(360deg);}}
+.hero-content{position:relative;z-index:3;}
+.hero-eyebrow{
+  font-size:.85rem;letter-spacing:6px;
+  color:var(--gold-light);opacity:.85;
+  margin-bottom:22px;text-transform:uppercase;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,8vw,6rem);
+  color:var(--gold-light);
+  font-weight:500;
+  letter-spacing:3px;
+  line-height:1.05;
+  text-shadow:0 0 60px rgba(212,175,55,.2);
+}
+.hero p.lead{
+  max-width:640px;margin:32px auto 0;
+  font-size:1.1rem;line-height:1.9;
+  color:#d4d4d4;font-weight:300;
+  letter-spacing:2px;
+}
+/* SECTIONS */
+.station{
+  width:min(1050px,92%);
+  margin:0 auto 90px;
+  padding:80px 60px;
+  border-radius:32px;
+  background:var(--glass);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border:1px solid var(--border);
+  box-shadow:0 30px 90px rgba(0,0,0,.32);
+  position:relative;z-index:2;
+  overflow:hidden;
+  opacity:0;transform:translateY(60px);
+  transition:opacity 1.6s ease,transform 1.6s ease;
+}
+.station.visible{opacity:1;transform:none;}
+.station .geometry{
+  position:absolute;inset:0;
+  display:flex;justify-content:center;align-items:center;
+  opacity:.09;pointer-events:none;
+  z-index:0;
+}
+.station .geometry svg{width:min(90%,720px);height:auto;}
+.station .content{position:relative;z-index:2;}
+.station h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,4vw,2.8rem);
+  color:var(--gold-light);
+  margin-bottom:34px;
+  letter-spacing:2px;
+  text-align:center;
+  font-weight:500;
+}
+.station h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;
+  color:var(--gold-light);
+  margin:30px 0 12px;
+  font-style:italic;
+  font-weight:400;
+  opacity:.92;
+  text-align:center;
+}
+.station p{
+  max-width:760px;
+  margin:0 auto 22px;
+  text-align:center;
+  color:#e8e8e8;
+  font-weight:300;
+  font-size:1.05rem;
+  line-height:2.1;
+}
+.station p em{
+  color:var(--gold-light);
+  font-style:italic;
+}
+.mantra{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,1.95rem);
+  color:var(--gold-light);
+  text-align:center;
+  line-height:1.65;
+  margin:32px auto;
+  max-width:700px;
+  font-style:italic;
+  letter-spacing:1px;
+}
+.final-block{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3.5vw,2.3rem);
+  color:var(--gold-light);
+  text-align:center;
+  line-height:1.7;
+  margin:40px auto;
+  max-width:760px;
+  letter-spacing:1px;
+}
+/* GEOMETRY ANIMATIONS */
+.flower-anim{animation:flowerBreathe 14s ease-in-out infinite, flowerRotate 280s linear infinite;transform-origin:center;}
+@keyframes flowerBreathe{0%,100%{opacity:.55;}50%{opacity:.9;}}
+@keyframes flowerRotate{to{transform:rotate(360deg);}}
+.vesica-anim{animation:vesicaFloat 16s ease-in-out infinite;}
+@keyframes vesicaFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.rings-anim circle{transform-origin:center;animation:ripple 12s ease-in-out infinite;}
+.rings-anim circle:nth-child(1){animation-delay:0s;}
+.rings-anim circle:nth-child(2){animation-delay:-2s;}
+.rings-anim circle:nth-child(3){animation-delay:-4s;}
+.rings-anim circle:nth-child(4){animation-delay:-6s;}
+.rings-anim circle:nth-child(5){animation-delay:-8s;}
+.rings-anim circle:nth-child(6){animation-delay:-10s;}
+@keyframes ripple{0%,100%{opacity:.25;transform:scale(.96);}50%{opacity:.75;transform:scale(1.04);}}
+.metatron-anim{transform-origin:center;animation:spinSlow 240s linear infinite;}
+@keyframes spinSlow{to{transform:rotate(360deg);}}
+.torus-anim{transform-origin:center;animation:torusPulse 15s ease-in-out infinite;}
+@keyframes torusPulse{0%,100%{transform:scale(1) rotate(0deg);}50%{transform:scale(1.04) rotate(3deg);}}
+.yantra-anim{transform-origin:center;animation:yantraPulse 10s ease-in-out infinite, yantraSpin 200s linear infinite;}
+@keyframes yantraPulse{0%,100%{opacity:.6;}50%{opacity:1;}}
+@keyframes yantraSpin{to{transform:rotate(360deg);}}
+.convergence-anim{transform-origin:center;animation:spinSlow 400s linear infinite, flowerBreathe 20s ease-in-out infinite;}
+/* FINAL */
+.footer{
+  padding:120px 30px 80px;
+  text-align:center;
+  position:relative;z-index:2;
+}
+.footer h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.5rem,6vw,4rem);
+  color:var(--gold-light);
+  margin-bottom:30px;
+  letter-spacing:4px;
+}
+.footer .mantra{font-size:clamp(1.5rem,3.5vw,2rem);}
+@media(max-width:700px){
+  .station{padding:50px 26px;margin-bottom:60px;}
+  .back-nav{top:14px;left:14px;padding:8px 16px;font-size:.75rem;}
+}
+</style>
 </head>
 <body>
 
-  <div id="progress" aria-hidden="true"></div>
-  <canvas id="particles" aria-hidden="true"></canvas>
+<div id="progress"></div>
+<canvas id="particles"></canvas>
+<a href="index.html" class="back-nav">← Voltar</a>
 
-  <header class="hero">
-    <span class="hero-eyebrow">Prática Diária de Presença</span>
+<section class="hero">
+  <svg class="hero-svg" viewBox="0 0 800 800" aria-hidden="true">
+    <g fill="none" stroke="#D4AF37" stroke-width="1.1">
+      <circle cx="400" cy="400" r="60"/>
+      <circle cx="460" cy="400" r="60"/>
+      <circle cx="340" cy="400" r="60"/>
+      <circle cx="430" cy="348" r="60"/>
+      <circle cx="370" cy="348" r="60"/>
+      <circle cx="430" cy="452" r="60"/>
+      <circle cx="370" cy="452" r="60"/>
+      <circle cx="400" cy="296" r="60"/>
+      <circle cx="400" cy="504" r="60"/>
+      <circle cx="490" cy="348" r="60"/>
+      <circle cx="310" cy="348" r="60"/>
+      <circle cx="490" cy="452" r="60"/>
+      <circle cx="310" cy="452" r="60"/>
+      <circle cx="460" cy="296" r="60"/>
+      <circle cx="340" cy="296" r="60"/>
+      <circle cx="460" cy="504" r="60"/>
+      <circle cx="340" cy="504" r="60"/>
+      <circle cx="520" cy="400" r="60"/>
+      <circle cx="280" cy="400" r="60"/>
+    </g>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Raíces del Amor</div>
     <h1>Discurso da Manhã</h1>
-    <div class="hero-divider" aria-hidden="true"></div>
-    <p>Gratidão &bull; Palavra &bull; Destino &bull; Cuidado</p>
+    <p class="lead">Gratidão · Palavra · Destino · Cuidado</p>
+  </div>
+</section>
 
-    <a href="#teresa" class="scroll-hint" aria-label="Rolar para o conteúdo">
-      <span>Iniciar</span>
-      <div class="scroll-line"></div>
-    </a>
-  </header>
+<!-- ABERTURA -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="flower-anim">
+      <g fill="none" stroke="#D4AF37" stroke-width="1">
+        <circle cx="400" cy="400" r="70"/>
+        <circle cx="470" cy="400" r="70"/>
+        <circle cx="330" cy="400" r="70"/>
+        <circle cx="435" cy="339" r="70"/>
+        <circle cx="365" cy="339" r="70"/>
+        <circle cx="435" cy="461" r="70"/>
+        <circle cx="365" cy="461" r="70"/>
+        <circle cx="400" cy="279" r="70"/>
+        <circle cx="400" cy="521" r="70"/>
+        <circle cx="505" cy="339" r="70"/>
+        <circle cx="295" cy="339" r="70"/>
+        <circle cx="505" cy="461" r="70"/>
+        <circle cx="295" cy="461" r="70"/>
+        <circle cx="470" cy="279" r="70"/>
+        <circle cx="330" cy="279" r="70"/>
+        <circle cx="470" cy="521" r="70"/>
+        <circle cx="330" cy="521" r="70"/>
+        <circle cx="540" cy="400" r="70"/>
+        <circle cx="260" cy="400" r="70"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <p>Bom dia, Vida.</p>
+    <p>Bom dia, Fonte de todo bem.</p>
+    <p>Bom dia, consciência que desperta em mim.</p>
+    <p style="margin-top:38px;">Antes da pressa, eu escolho o centro.</p>
+  </div>
+</section>
 
-  <main>
-    <section id="teresa" class="panel">
-      <div class="geometry" aria-hidden="true">
-        <svg class="flower" viewBox="0 0 800 800">
-          <g fill="none" stroke="#d4af37" stroke-width="1.5">
-            <circle cx="400" cy="400" r="120"/>
-            <circle cx="280" cy="400" r="120"/>
-            <circle cx="520" cy="400" r="120"/>
-            <circle cx="340" cy="296" r="120"/>
-            <circle cx="460" cy="296" r="120"/>
-            <circle cx="340" cy="504" r="120"/>
-            <circle cx="460" cy="504" r="120"/>
-            <circle cx="400" cy="400" r="240"/>
-          </g>
-        </svg>
-      </div>
-
-      <span class="panel-number">I. O Centro</span>
-      <h2>Teresa e Gratidão</h2>
-
-      <p>
-        Bom dia, Vida.<br>
-        Bom dia, Fonte de todo bem.<br>
-        Bom dia, consciência que desperta em mim.
-      </p>
-
-      <p>
-        Antes da pressa, eu escolho o centro.
-      </p>
-
-      <blockquote>
-        Tudo passa.<br>
-        Deus permanece.<br>
-        A paciência tudo alcança.<br>
-        Só Deus basta.
-      </blockquote>
-
-      <p>
-        Por isso, agradeço.<br>
-        Agradeço mesmo quando tudo ainda pede ajuste:
-        estou vivo, respirando, capaz de recomeçar.
-      </p>
-    </section>
-
-    <section class="panel">
-      <div class="geometry" aria-hidden="true">
-        <svg class="metatron" viewBox="0 0 800 800">
-          <g fill="none" stroke="#d4af37" stroke-width="1.5">
-            <circle cx="400" cy="400" r="220"/>
-            <circle cx="400" cy="400" r="110"/>
-            <line x1="180" y1="400" x2="620" y2="400"/>
-            <line x1="400" y1="180" x2="400" y2="620"/>
-            <line x1="244" y1="244" x2="556" y2="556"/>
-            <line x1="556" y1="244" x2="244" y2="556"/>
-          </g>
-        </svg>
-      </div>
-
-      <span class="panel-number">II. A Direção</span>
-      <h2>Nietzsche e Destino</h2>
-
-      <p>
-        <em>Amor fati</em>: amor ao destino.
-      </p>
-
-      <p>
-        Mais que suportar o necessário:<br>
-        amá-lo e, a partir dele, criar.
-      </p>
-
-      <p>
-        Que eu me torne quem sou.<br>
-        Que minha força se expresse como serviço.
-      </p>
-    </section>
-
-    <section class="panel">
-      <div class="geometry" aria-hidden="true">
-        <svg class="yantra" viewBox="0 0 800 800">
-          <g fill="none" stroke="#d4af37" stroke-width="1.5">
-            <polygon points="400,130 634,535 166,535"/>
-            <polygon points="400,670 634,265 166,265"/>
-            <circle cx="400" cy="400" r="270"/>
-          </g>
-        </svg>
-      </div>
-
-      <span class="panel-number">III. A Integração</span>
-      <h2>Síntese</h2>
-
-      <p>
-        Hoje uno a confiança de Teresa,
-        a doçura de Coué,
-        o sim de Nietzsche,
-        a gentileza do Reiki
-        e a escuta compassiva da CNV.
-      </p>
-
-      <p>
-        Que minha palavra construa.<br>
-        Que minhas mãos sirvam.<br>
-        Que meu coração permaneça desperto.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <h2>Gratidão</h2>
+<!-- TERESA E GRATIDÃO -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="flower-anim">
+      <g fill="none" stroke="#D4AF37" stroke-width="1">
+        <circle cx="400" cy="400" r="70"/>
+        <circle cx="470" cy="400" r="70"/>
+        <circle cx="330" cy="400" r="70"/>
+        <circle cx="435" cy="339" r="70"/>
+        <circle cx="365" cy="339" r="70"/>
+        <circle cx="435" cy="461" r="70"/>
+        <circle cx="365" cy="461" r="70"/>
+        <circle cx="400" cy="279" r="70"/>
+        <circle cx="400" cy="521" r="70"/>
+        <circle cx="505" cy="339" r="70"/>
+        <circle cx="295" cy="339" r="70"/>
+        <circle cx="505" cy="461" r="70"/>
+        <circle cx="295" cy="461" r="70"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Teresa & Gratidão</h2>
     <p>
-      Assim é.<br>
-      Assim quero.<br>
-      Assim começo.
+      Com Santa Teresa d'Ávila, eu aquieto o peito:<br>
+      <em>que a serenidade me habite… que a confiança me sustente.</em>
     </p>
-  </footer>
+    <div class="mantra">
+      Tudo passa.<br>
+      Deus permanece.<br>
+      A paciência tudo alcança.<br>
+      Quem tem Deus tudo encontra.<br>
+      Só Deus basta.
+    </div>
+    <p>Por isso, agradeço.</p>
+    <p>
+      Agradeço mesmo quando tudo ainda pede ajuste: estou vivo, respirando, capaz de recomeçar.
+    </p>
+    <p>
+      Agradeço pelo corpo que me sustenta, pelas mãos que cuidam e reparam, pela escuta que amadureceu com os anos.
+    </p>
+    <p>
+      Agradeço pela Elena, pelo nosso caminho de amor e cura, por cada pessoa que confia em mim.
+    </p>
+    <p>
+      Agradeço pelo que chegou e pelo que ainda está a caminho; pelo que entendo e pelo que ainda estou aprendendo.
+    </p>
+    <p>
+      Que minha mansidão seja firmeza serena.<br>
+      Que minha firmeza seja mansidão desperta.
+    </p>
+    <p>
+      Que eu tenha a determinada determinação de quem permanece fiel ao essencial.
+    </p>
+  </div>
+</section>
 
-  <script>
-    // 1. Barra de progresso de leitura
-    const progress = document.getElementById('progress');
+<!-- CONTINGÊNCIA - VESICA PISCIS -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="vesica-anim">
+      <g fill="none" stroke="#D4AF37" stroke-width="1.1">
+        <circle cx="340" cy="400" r="180"/>
+        <circle cx="460" cy="400" r="180"/>
+        <path d="M400 220 Q540 400 400 580 Q260 400 400 220 Z" fill="rgba(212,175,55,.05)"/>
+        <line x1="400" y1="220" x2="400" y2="580" stroke-dasharray="4 8" opacity=".6"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Contingência</h2>
+    <p>
+      Reconheço a mais humana das verdades: <em>sou contingente.</em>
+    </p>
+    <p>
+      Recebi a vida antes de qualquer escolha minha.<br>
+      Meu alcance é limitado; minha interdependência é real.
+    </p>
+    <p>
+      Sou frágil, finito, atravessado por acaso e por cuidado.<br>
+      Que isso me irmane e me eleve.
+    </p>
+    <p>
+      Porque cada pessoa que eu encontrar hoje também é contingente:<br>
+      também teme, espera, ama alguém, carrega uma história que eu desconheço.
+    </p>
+    <div class="mantra">
+      Toda pessoa é pertencimento.<br>
+      Toda pessoa é mais que uma dificuldade.<br>
+      Cada um é um mundo pedindo cuidado.
+    </div>
+  </div>
+</section>
 
-    function updateProgress() {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      if (total <= 0) {
-        progress.style.width = '0%';
-        return;
-      }
-      const value = Math.min(Math.max(window.scrollY / total, 0), 1);
-      progress.style.width = `${value * 100}%`;
-    }
+<!-- COUÉ - ONDAS -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="rings-anim">
+      <g fill="none" stroke="#8B5CF6" stroke-width="1">
+        <circle cx="400" cy="400" r="60"/>
+        <circle cx="400" cy="400" r="120"/>
+        <circle cx="400" cy="400" r="180"/>
+        <circle cx="400" cy="400" r="240"/>
+        <circle cx="400" cy="400" r="300"/>
+        <circle cx="400" cy="400" r="360"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Palavra Interior</h2>
+    <p>
+      Com Émile Coué, eu educo minha mente com doçura.
+    </p>
+    <p>
+      Solto o esforço contra mim mesmo<br>
+      e deixo a imaginação aprender um novo caminho.
+    </p>
+    <p>
+      Por isso, repito com naturalidade, como quem rega uma semente:
+    </p>
+    <div class="mantra">
+      Todos os dias, sob todos os pontos de vista,<br>
+      vou cada vez melhor.
+    </div>
+    <div class="mantra">
+      Todos os dias, sob todos os pontos de vista,<br>
+      vou cada vez melhor.
+    </div>
+    <div class="mantra">
+      Todos os dias, sob todos os pontos de vista,<br>
+      vou cada vez melhor.
+    </div>
+  </div>
+</section>
 
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
+<!-- NIETZSCHE - METATRON -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="metatron-anim">
+      <g fill="none" stroke="#D4AF37" stroke-width="0.9">
+        <circle cx="400" cy="400" r="60"/>
+        <circle cx="460" cy="400" r="60"/>
+        <circle cx="340" cy="400" r="60"/>
+        <circle cx="430" cy="348" r="60"/>
+        <circle cx="370" cy="348" r="60"/>
+        <circle cx="430" cy="452" r="60"/>
+        <circle cx="370" cy="452" r="60"/>
+        <circle cx="490" cy="348" r="60"/>
+        <circle cx="310" cy="348" r="60"/>
+        <circle cx="490" cy="452" r="60"/>
+        <circle cx="310" cy="452" r="60"/>
+        <circle cx="400" cy="296" r="60"/>
+        <circle cx="400" cy="504" r="60"/>
+        <line x1="400" y1="296" x2="400" y2="504"/>
+        <line x1="340" y1="400" x2="460" y2="400"/>
+        <line x1="370" y1="348" x2="430" y2="452"/>
+        <line x1="430" y1="348" x2="370" y2="452"/>
+        <line x1="310" y1="348" x2="490" y2="452"/>
+        <line x1="490" y1="348" x2="310" y2="452"/>
+        <line x1="400" y1="296" x2="490" y2="452"/>
+        <line x1="400" y1="296" x2="310" y2="452"/>
+        <line x1="400" y1="504" x2="490" y2="348"/>
+        <line x1="400" y1="504" x2="310" y2="348"/>
+        <line x1="310" y1="348" x2="490" y2="348"/>
+        <line x1="310" y1="452" x2="490" y2="452"/>
+        <line x1="370" y1="348" x2="430" y2="348"/>
+        <line x1="370" y1="452" x2="430" y2="452"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Destino</h2>
+    <p>
+      Com Nietzsche, eu afirmo a vida.
+    </p>
+    <p>
+      <em>Amor fati: amor ao destino.</em>
+    </p>
+    <p>
+      Mais que suportar o necessário: amá-lo… e, a partir dele, criar.
+    </p>
+    <p>
+      Quero um dia verdadeiro, inteiro, desperto.
+    </p>
+    <p>
+      Que o difícil me fortaleça com o coração preservado.<br>
+      Que eu transforme dor em aprendizado, livre de ressentimento; peso em força.
+    </p>
+    <p>
+      Que eu me encontre em mim: que eu me torne quem sou.
+    </p>
+    <p>
+      Que eu tenha um porquê bastante forte para atravessar qualquer como.
+    </p>
+    <p>
+      Que minha potência se expresse como proteção, e minha força como serviço.
+    </p>
+    <div class="mantra">
+      Superar-me elevando também quem caminha comigo.
+    </div>
+  </div>
+</section>
 
-    // 2. Animação suave de entrada dos painéis (Intersection Observer)
-    const panels = document.querySelectorAll('.panel');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
+<!-- REIKI - TORUS -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="torus-anim">
+      <defs>
+        <linearGradient id="torusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38BDF8"/>
+          <stop offset="50%" stop-color="#8BD5FF"/>
+          <stop offset="100%" stop-color="#D4AF37"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#torusGrad)" stroke-width="1.2">
+        <ellipse cx="400" cy="400" rx="280" ry="105"/>
+        <ellipse cx="400" cy="400" rx="280" ry="160"/>
+        <ellipse cx="400" cy="400" rx="280" ry="215"/>
+        <ellipse cx="400" cy="400" rx="105" ry="280"/>
+        <ellipse cx="400" cy="400" rx="160" ry="280"/>
+        <ellipse cx="400" cy="400" rx="215" ry="280"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Cuidado</h2>
+    <p>
+      Com o Reiki, eu transformo princípio em gesto.
+    </p>
+    <div class="mantra">
+      Só por hoje… cultivo a serenidade diante do que me desafia.<br>
+      Só por hoje… confio no fluxo e cuido do que está ao meu alcance.<br>
+      Só por hoje… sou grato.<br>
+      Só por hoje… trabalho com honestidade.<br>
+      Só por hoje… sou gentil com todos os seres.
+    </div>
+    <p>
+      E se a irritação ou a preocupação vierem, que eu as escute antes de agir:<br>
+      como mensageiras de necessidades, chamando-me de volta ao cuidado.
+    </p>
+    <p>
+      Que minhas mãos sejam presença, oferecida com consentimento e expectativas honestas.
+    </p>
+    <p>
+      Que eu cuide de mim como base do cuidado que ofereço a todos.
+    </p>
+    <p>
+      Que eu respeite o consentimento, a recusa e o tempo de cada um.
+    </p>
+    <p>
+      Que eu reconheça o bem que passa por mim e o devolva em gratidão.
+    </p>
+  </div>
+</section>
 
-    panels.forEach(panel => observer.observe(panel));
+<!-- CNV - SRI YANTRA -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="yantra-anim">
+      <g fill="none" stroke="#D4AF37" stroke-width="1">
+        <polygon points="400,120 600,560 200,560"/>
+        <polygon points="400,680 600,240 200,240"/>
+        <polygon points="400,170 560,540 240,540"/>
+        <polygon points="400,630 560,260 240,260"/>
+        <polygon points="400,220 520,520 280,520"/>
+        <polygon points="400,580 520,280 280,280"/>
+        <polygon points="260,340 540,340 400,560"/>
+        <polygon points="260,460 540,460 400,240"/>
+        <polygon points="400,320 460,480 340,480"/>
+        <circle cx="400" cy="400" r="12"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Escuta Compassiva</h2>
+    <p>
+      Que o amor ao próximo seja conduta viva.
+    </p>
+    <p>
+      Que eu observe fatos antes de avaliar;<br>
+      nomeie o que sinto em primeira pessoa;<br>
+      reconheça o que preciso como necessidade humana;<br>
+      faça pedidos claros, possíveis e livres.
+    </p>
+    <p>
+      Que eu escute por trás da fala dura a necessidade viva.
+    </p>
+    <p>
+      Que eu mantenha pedido como convite, limite como cuidado, discordância como diálogo.
+    </p>
+    <p>
+      Que eu expresse meus limites com cuidado e acolha os limites do outro com inteireza.
+    </p>
+    <p>
+      Que eu fale a verdade com ternura e ouça a verdade com abertura.
+    </p>
+    <div class="mantra">
+      Justiça com ternura é firmeza humana;<br>
+      ternura com justiça é cuidado inteiro.
+    </div>
+  </div>
+</section>
 
-    // 3. Partículas douradas no fundo
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+<!-- SÍNTESE FINAL -->
+<section class="station">
+  <div class="geometry">
+    <svg viewBox="0 0 800 800" class="convergence-anim">
+      <g fill="none" stroke="#D4AF37" stroke-width="0.8" opacity=".85">
+        <circle cx="400" cy="400" r="60"/>
+        <circle cx="460" cy="400" r="60"/>
+        <circle cx="340" cy="400" r="60"/>
+        <circle cx="430" cy="348" r="60"/>
+        <circle cx="370" cy="348" r="60"/>
+        <circle cx="430" cy="452" r="60"/>
+        <circle cx="370" cy="452" r="60"/>
+        <circle cx="400" cy="296" r="60"/>
+        <circle cx="400" cy="504" r="60"/>
+        <polygon points="400,120 600,560 200,560"/>
+        <polygon points="400,680 600,240 200,240"/>
+        <ellipse cx="400" cy="400" rx="260" ry="100"/>
+        <ellipse cx="400" cy="400" rx="100" ry="260"/>
+        <circle cx="400" cy="400" r="240"/>
+        <circle cx="400" cy="400" r="300"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content">
+    <h2>Síntese</h2>
+    <p>
+      Hoje, uno as vozes:<br>
+      a confiança de Teresa,<br>
+      a doçura de Coué,<br>
+      o sim de Nietzsche,<br>
+      a gentileza do Reiki,<br>
+      a escuta compassiva da CNV,<br>
+      e a humildade de saber-me contingente.
+    </p>
+    <div class="final-block">
+      Por isso, hoje:<br>
+      a serenidade guarda meu centro;<br>
+      minha palavra constrói;<br>
+      meu destino é amado e trabalhado;<br>
+      minhas mãos servem com consentimento;<br>
+      minha fala observa, sente, precisa e pede;<br>
+      meu coração lembra que o outro também é frágil.
+    </div>
+    <p>
+      Que eu trabalhe com honestidade, fale com verdade, cuide com presença, descanse com tranquilidade.
+    </p>
+    <p>
+      Que eu seja instrumento de cuidado, lembrando também de mim.
+    </p>
+    <p>
+      Que ao anoitecer eu possa dizer com o coração inteiro:<br>
+      <em>"criei, amei, cuidei, escutei, superei".</em>
+    </p>
+  </div>
+</section>
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+<footer class="footer">
+  <h2>Gratidão</h2>
+  <div class="mantra">Gratidão… Gratidão… Gratidão…</div>
+  <div class="mantra">
+    Assim é.<br>
+    Assim quero.<br>
+    Assim começo.
+  </div>
+</footer>
 
-    window.addEventListener('resize', () => {
-      const oldWidth = width;
-      const oldHeight = height;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+<script>
+// Barra de progresso
+const progress = document.getElementById('progress');
+function updateProgress(){
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const value = total > 0 ? window.scrollY / total : 0;
+  progress.style.width = (value*100) + '%';
+}
+window.addEventListener('scroll', updateProgress);
+updateProgress();
 
-      // Reposiciona proporcionalmente ao redimensionar a janela
-      particles.forEach(p => {
-        p.x = (p.x / oldWidth) * width;
-        p.y = (p.y / oldHeight) * height;
-      });
-    });
+// Particles
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+const N = window.innerWidth < 700 ? 60 : 130;
+for(let i=0;i<N;i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    s: Math.random()*1.8+0.4,
+    v: Math.random()*0.35+0.08,
+    drift: (Math.random()-0.5)*0.15,
+    a: Math.random()*0.5+0.2
+  });
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.y -= p.v;
+    p.x += p.drift;
+    if(p.y < -10){ p.y = canvas.height+10; p.x = Math.random()*canvas.width; }
+    if(p.x < -10) p.x = canvas.width+10;
+    if(p.x > canvas.width+10) p.x = -10;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+    ctx.fillStyle = `rgba(212,175,55,${p.a*0.45})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
 
-    const particleCount = Math.min(120, Math.floor((width * height) / 12000));
-    const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.8 + 0.6,
-      v: Math.random() * 0.45 + 0.12,
-      alpha: Math.random() * 0.5 + 0.15
-    }));
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, width, height);
-
-      particles.forEach(p => {
-        if (!prefersReducedMotion) {
-          p.y -= p.v;
-          if (p.y < -5) {
-            p.y = height + 5;
-            p.x = Math.random() * width;
-          }
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
-        ctx.fill();
-      });
-
-      if (!prefersReducedMotion) {
-        requestAnimationFrame(drawParticles);
-      }
-    }
-
-    drawParticles();
-  </script>
+// Reveal
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.station').forEach(s=>io.observe(s));
+</script>
 </body>
 </html>
