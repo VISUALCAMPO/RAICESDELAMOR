@@ -1,1124 +1,484 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raíces del Amor · Cuidado, Presença e Transformação</title>
-  <meta name="description" content="Um espaço dedicado ao cuidado, à presença e à transformação — entre filosofia, espiritualidade e escuta compassiva." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ============================================================
-       RESET & TOKENS
-    ============================================================ */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg-deep: #050d1a;
-      --bg: #0a1628;
-      --bg-mid: #0d1f3c;
-      --surface: rgba(13, 31, 60, 0.55);
-      --gold: #d4af37;
-      --gold-light: #f0d67a;
-      --gold-bright: #ffd966;
-      --gold-dim: #8a6f1f;
-      --text: #e8e4d8;
-      --text-soft: #9aa8bd;
-      --text-muted: #6b7a90;
-      --border: rgba(212, 175, 55, 0.2);
-      --border-bright: rgba(212, 175, 55, 0.5);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-      --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.2);
-      --radius: 20px;
-      --radius-sm: 14px;
-      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: var(--bg-deep);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ============================================================
-       FUNDO — AZUL PROFUNDO COM HALOS
-    ============================================================ */
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13, 31, 60, 0.9), transparent 70%),
-        radial-gradient(ellipse at center, #0a1628 0%, #050d1a 100%);
-    }
-    .bg::before, .bg::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-    .bg::before {
-      top: 10%; left: 20%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.14), transparent 70%);
-      animation: drift1 25s ease-in-out infinite alternate;
-    }
-    .bg::after {
-      bottom: 10%; right: 20%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(70, 130, 200, 0.16), transparent 70%);
-      animation: drift2 30s ease-in-out infinite alternate;
-    }
-    @keyframes drift1 {
-      from { transform: translate(0,0) scale(1); }
-      to   { transform: translate(80px,40px) scale(1.2); }
-    }
-    @keyframes drift2 {
-      from { transform: translate(0,0) scale(1); }
-      to   { transform: translate(-60px,-40px) scale(1.15); }
-    }
-
-    /* estrelas sutis */
-    .stars {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image:
-        radial-gradient(1px 1px at 20% 30%, rgba(240, 214, 122, 0.6), transparent),
-        radial-gradient(1px 1px at 80% 20%, rgba(240, 214, 122, 0.4), transparent),
-        radial-gradient(1.5px 1.5px at 40% 70%, rgba(240, 214, 122, 0.5), transparent),
-        radial-gradient(1px 1px at 90% 60%, rgba(240, 214, 122, 0.35), transparent),
-        radial-gradient(1px 1px at 10% 80%, rgba(240, 214, 122, 0.4), transparent),
-        radial-gradient(1.5px 1.5px at 60% 90%, rgba(240, 214, 122, 0.5), transparent);
-      animation: twinkle 8s ease-in-out infinite;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.55; }
-      50%      { opacity: 1; }
-    }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem 6rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      padding: 0.5rem 1.4rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      background: rgba(212, 175, 55, 0.05);
-      backdrop-filter: blur(10px);
-      margin-bottom: 1.8rem;
-      animation: fadeUp 0.9s 0.15s both;
-    }
-    .hero-badge::before, .hero-badge::after {
-      content: "✦";
-      color: var(--gold);
-      font-size: 0.7rem;
-    }
-
-    /* --- Geometria sagrada --- */
-    .hero-geometry {
-      width: min(420px, 75vw, 48vh);
-      height: min(420px, 75vw, 48vh);
-      margin: -1.5rem 0 -0.5rem;
-      position: relative;
-      animation: fadeIn 1.6s 0.3s both, float 9s 1.9s ease-in-out infinite;
-      will-change: transform;
-    }
-    .hero-geometry svg {
-      width: 100%; height: 100%;
-      overflow: visible;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-16px); }
-    }
-
-    /* camadas de rotação — transform-origin no centro do bbox */
-    .rot-slow, .rot-slow-rev, .rot-medium, .rot-medium-rev {
-      transform-box: fill-box;
-      transform-origin: center;
-      will-change: transform;
-    }
-    .rot-slow    { animation: spin    120s linear infinite; }
-    .rot-slow-rev{ animation: spinRev 100s linear infinite; }
-    .rot-medium  { animation: spin     70s linear infinite; }
-    .rot-medium-rev { animation: spinRev 55s linear infinite; }
-
-    @keyframes spin    { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
-    @keyframes spinRev { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
-
-    .pulse-glow {
-      animation: pulseGlow 5.5s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50%      { opacity: 1;   transform: scale(1.08); }
-    }
-
-    /* --- Título --- */
-    .hero-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 9vw, 6.4rem);
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      line-height: 0.95;
-      margin-bottom: 1.4rem;
-      animation: fadeUp 1s 0.55s both;
-      position: relative;
-      display: inline-block;
-    }
-    /* halo radial atrás do título */
-    .hero-title::before {
-      content: "";
-      position: absolute;
-      inset: -50% -30%;
-      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.18), transparent 62%);
-      z-index: -1;
-      pointer-events: none;
-      filter: blur(20px);
-    }
-    .hero-title .line {
-      display: block;
-      background: linear-gradient(135deg, #f7e393 0%, #d4af37 30%, #a88a1f 52%, #d4af37 72%, #f7e393 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: var(--gold);
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
-    }
-    .hero-title .line-1 {
-      font-style: italic;
-      font-weight: 300;
-      font-size: 0.62em;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      margin-bottom: -0.1em;
-    }
-    .hero-title .line-2 {
-      font-weight: 500;
-    }
-
-    .hero-divider {
-      width: 90px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 0 auto 1.4rem;
-      position: relative;
-      animation: fadeUp 1s 0.75s both;
-    }
-    .hero-divider::before, .hero-divider::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-      transform: translateY(-50%);
-      box-shadow: 0 0 10px var(--gold);
-    }
-    .hero-divider::before { left: -10px; }
-    .hero-divider::after  { right: -10px; }
-
-    .hero-subtitle {
-      font-size: 0.98rem;
-      font-weight: 300;
-      color: var(--text-soft);
-      max-width: 520px;
-      margin: 0 auto 2rem;
-      line-height: 1.8;
-      letter-spacing: 0.02em;
-      animation: fadeUp 1s 0.9s both;
-    }
-
-    /* --- Pills de referência --- */
-    .hero-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      justify-content: center;
-      max-width: 760px;
-      margin: 0 auto 2.2rem;
-      animation: fadeUp 1s 1.1s both;
-    }
-    .info-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      background: rgba(13, 31, 60, 0.55);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      text-decoration: none;
-      backdrop-filter: blur(10px);
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    .info-pill:hover {
-      color: var(--gold-light);
-      border-color: var(--border-bright);
-      background: rgba(20, 45, 80, 0.75);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(212, 175, 55, 0.18);
-    }
-    .info-pill svg {
-      width: 14px; height: 14px;
-      stroke: var(--gold);
-      fill: none;
-      flex-shrink: 0;
-    }
-
-    /* --- CTA --- */
-    .hero-cta {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeUp 1s 1.3s both;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      font-family: inherit;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #f0d67a, #d4af37 50%, #b8941f);
-      color: #050d1a;
-      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 44px rgba(212, 175, 55, 0.55);
-      background: linear-gradient(135deg, #ffd966, #f0d67a 50%, #d4af37);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.06);
-      transform: translateY(-3px);
-    }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    /* --- Indicador de scroll --- */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 1.8rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.6rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      animation: fadeIn 1s 2s both;
-    }
-    .scroll-indicator::after {
-      content: "";
-      width: 1px; height: 44px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollLine 2.2s ease-in-out infinite;
-    }
-    @keyframes scrollLine {
-      0%, 100% { transform: scaleY(0.3); opacity: 0.3; transform-origin: top; }
-      50%      { transform: scaleY(1);   opacity: 1;   transform-origin: top; }
-    }
-
-    /* ============================================================
-       SEÇÕES
-    ============================================================ */
-    .section {
-      padding: 6rem 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .section-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      position: relative;
-      padding: 0 1.6rem;
-    }
-    .section-tag::before, .section-tag::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 1rem; height: 1px;
-      background: var(--gold-dim);
-    }
-    .section-tag::before { left: 0; }
-    .section-tag::after  { right: 0; }
-
-    .section-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.15;
-      letter-spacing: 0.01em;
-    }
-    .section-desc {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      max-width: 560px;
-      margin: 1rem auto 0;
-      line-height: 1.7;
-    }
-
-    /* Manifesto */
-    .manifesto-card {
-      background: var(--surface);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius);
-      padding: 3rem;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .manifesto-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .manifesto-card::after {
-      content: "“";
-      position: absolute;
-      top: -20px; left: 22px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 8rem;
-      color: var(--gold);
-      opacity: 0.15;
-      line-height: 1;
-    }
-    .manifesto-text {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.35rem;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.8;
-      color: var(--text);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .manifesto-text strong {
-      font-weight: 500;
-      font-style: normal;
-      color: var(--gold-light);
-    }
-
-    /* Caminhos */
-    .paths-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-    }
-    .path-card {
-      background: var(--surface);
-      backdrop-filter: blur(15px);
-      border-radius: var(--radius-sm);
-      padding: 2rem 1.6rem;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .path-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-bright);
-      box-shadow: var(--shadow-glow);
-    }
-    .path-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.1), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-    .path-card:hover::before { opacity: 1; }
-
-    .path-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px; height: 40px;
-      margin-bottom: 1.25rem;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      color: var(--gold);
-      font-size: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .path-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.35rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-      letter-spacing: 0.01em;
-      position: relative;
-      z-index: 1;
-    }
-    .path-card p {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Citação */
-    .morning-quote {
-      background: var(--surface);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius);
-      padding: 3.5rem 2.5rem;
-      text-align: center;
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .morning-quote::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 60%; height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .morning-quote blockquote {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1.5;
-      max-width: 600px;
-      margin: 0 auto 1rem;
-    }
-    .morning-quote cite {
-      display: block;
-      font-family: "Inter", sans-serif;
-      font-size: 0.68rem;
-      font-style: normal;
-      color: var(--text-muted);
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-    .morning-quote p {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      line-height: 1.8;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    /* Intenção */
-    .intention {
-      text-align: center;
-      padding: 3rem 1.5rem;
-    }
-    .intention p {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-      line-height: 1.9;
-      color: var(--text-soft);
-      max-width: 500px;
-      margin: 0 auto;
-      font-weight: 300;
-    }
-    .intention .highlight {
-      color: var(--gold-light);
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    /* Contato */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .contact-card {
-      background: var(--surface);
-      backdrop-filter: blur(15px);
-      border-radius: var(--radius-sm);
-      padding: 2rem 1.5rem;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-bright);
-      box-shadow: var(--shadow-glow);
-    }
-    .contact-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px; height: 44px;
-      margin-bottom: 1rem;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      color: var(--gold);
-    }
-    .contact-icon svg {
-      width: 18px; height: 18px;
-      stroke: currentColor;
-      fill: none;
-    }
-    .contact-label {
-      display: block;
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 0.6rem;
-    }
-    .contact-card h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.35;
-      margin-bottom: 0.4rem;
-    }
-    .contact-card p {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-    .contact-card a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .contact-card a:hover { color: var(--gold-light); }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 3rem 1.5rem 2rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(212, 175, 55, 0.1);
-      margin-top: 2rem;
-    }
-    .footer p + p { margin-top: 0.5rem; }
-    .footer a {
-      color: var(--text-soft);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .footer a:hover { color: var(--gold-light); }
-
-    /* Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
-                  transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsivo */
-    @media (max-width: 640px) {
-      .hero { padding: 2.5rem 1.2rem 4rem; }
-      .hero-geometry { width: min(340px, 82vw); height: min(340px, 82vw); }
-      .hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
-      .hero-subtitle { font-size: 0.88rem; }
-      .info-pill { font-size: 0.72rem; padding: 0.45rem 0.85rem; }
-      .section { padding: 4rem 1.2rem; }
-      .manifesto-card, .morning-quote { padding: 2rem 1.4rem; }
-      .manifesto-text { font-size: 1.1rem; }
-      .scroll-indicator { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raíces del Amor — Espaço Terapêutico</title>
+<meta name="description" content="Raíces del Amor — espaço terapêutico dedicado ao cuidado, à presença, à filosofia, à espiritualidade e à transformação humana.">
+<meta property="og:title" content="Raíces del Amor">
+<meta property="og:description" content="Presença • Cuidado • Gratidão • Transformação">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D4AF37;
+  --gold-light:#EFD990;
+  --pearl:#FAFAF8;
+  --deep:#0F172A;
+  --turquoise:#38BDF8;
+  --violet:#8B5CF6;
+  --glass:rgba(255,255,255,.055);
+  --border:rgba(255,255,255,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  color:#F5F5F4;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(56,189,248,.10), transparent 34%),
+    radial-gradient(circle at 88% 62%, rgba(139,92,246,.12), transparent 34%),
+    radial-gradient(circle at 50% 90%, rgba(212,175,55,.08), transparent 40%),
+    linear-gradient(135deg,#07111f,#0b1627,#0f1d34);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background:radial-gradient(circle at center,transparent 58%,rgba(0,0,0,.38));
+  pointer-events:none;z-index:1;
+}
+canvas#particles{position:fixed;inset:0;z-index:0;pointer-events:none;}
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 32px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(7,17,31,.55);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+nav .brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;letter-spacing:3px;
+  color:var(--gold-light);
+}
+nav ul{display:flex;gap:28px;list-style:none;}
+nav a{
+  color:#c9c9c9;text-decoration:none;
+  font-size:.9rem;letter-spacing:1px;
+  transition:.3s;
+}
+nav a:hover{color:var(--gold-light);}
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:120px 24px 80px;
+  position:relative;
+  z-index:2;
+}
+.hero-svg{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:min(90vw,900px);height:auto;
+  opacity:.10;z-index:0;
+  animation:rotateSlow 320s linear infinite;
+}
+@keyframes rotateSlow{to{transform:translate(-50%,-50%) rotate(360deg);}}
+.hero-content{position:relative;z-index:3;}
+.hero-eyebrow{
+  font-size:.85rem;letter-spacing:6px;
+  color:var(--gold-light);opacity:.85;
+  margin-bottom:22px;text-transform:uppercase;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,9vw,7rem);
+  font-weight:500;
+  color:var(--gold-light);
+  letter-spacing:3px;
+  line-height:1.05;
+  text-shadow:0 0 60px rgba(212,175,55,.18);
+}
+.hero p.lead{
+  max-width:760px;
+  margin:32px auto 0;
+  font-size:1.15rem;
+  line-height:1.9;
+  color:#dadada;
+  font-weight:300;
+}
+.hero-cta{
+  margin-top:52px;
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+}
+.btn{
+  padding:15px 38px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:.92rem;
+  letter-spacing:1.5px;
+  transition:.4s;
+  border:1px solid var(--gold);
+}
+.btn-primary{
+  background:linear-gradient(135deg,#D4AF37,#EFD990);
+  color:#0a0a0a;
+  font-weight:600;
+  box-shadow:0 10px 40px rgba(212,175,55,.25);
+}
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 50px rgba(212,175,55,.4);
+}
+.btn-ghost{
+  color:var(--gold-light);
+  background:rgba(255,255,255,.03);
+  backdrop-filter:blur(10px);
+}
+.btn-ghost:hover{
+  background:rgba(212,175,55,.1);
+  transform:translateY(-3px);
+}
+/* SECTIONS */
+.section{
+  width:min(1150px,92%);
+  margin:0 auto 90px;
+  padding:80px 55px;
+  border-radius:32px;
+  background:var(--glass);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border:1px solid var(--border);
+  box-shadow:0 25px 80px rgba(0,0,0,.3);
+  position:relative;z-index:2;
+  opacity:0;transform:translateY(50px);
+  transition:opacity 1.4s ease,transform 1.4s ease;
+}
+.section.visible{opacity:1;transform:none;}
+.section h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  color:var(--gold-light);
+  margin-bottom:30px;
+  text-align:center;
+  letter-spacing:2px;
+}
+.section p{
+  line-height:2.05;
+  font-size:1.06rem;
+  color:#e6e6e6;
+  max-width:820px;
+  margin:0 auto 20px;
+  text-align:center;
+  font-weight:300;
+}
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+  margin-top:50px;
+}
+.card{
+  padding:34px 26px;
+  border-radius:22px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.5s ease;
+  text-align:center;
+  cursor:default;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(212,175,55,.10),transparent 55%);
+  opacity:0;transition:.5s;
+}
+.card:hover::before{opacity:1;}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(212,175,55,.35);
+  background:rgba(255,255,255,.055);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+.card svg{width:52px;height:52px;margin-bottom:18px;opacity:.85;}
+.card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;
+  color:var(--gold-light);
+  margin-bottom:12px;
+}
+.card p{
+  font-size:.94rem;
+  line-height:1.75;
+  color:#c9c9c9;
+  text-align:center;
+}
+/* QUOTE */
+.quote-block{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,2.1rem);
+  line-height:1.7;
+  color:var(--gold-light);
+  text-align:center;
+  margin:50px auto 0;
+  max-width:820px;
+  padding:0 20px;
+  font-style:italic;
+}
+/* FOOTER */
+footer{
+  padding:100px 30px 60px;
+  text-align:center;
+  position:relative;z-index:2;
+}
+footer h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.5rem,6vw,4rem);
+  color:var(--gold-light);
+  margin-bottom:20px;
+  letter-spacing:3px;
+}
+footer p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;
+  line-height:2;
+  color:#d8d8d8;
+}
+footer .sig{
+  margin-top:50px;
+  font-size:.85rem;
+  letter-spacing:3px;
+  color:#7a7a7a;
+  font-family:'Inter',sans-serif;
+}
+@media(max-width:700px){
+  nav{padding:14px 18px;}
+  nav ul{gap:16px;}
+  nav a{font-size:.8rem;}
+  .section{padding:50px 25px;margin-bottom:60px;}
+  .hero-cta{flex-direction:column;align-items:center;}
+}
+</style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true"></div>
-  <div class="stars" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       HERO
-  ============================================================ -->
-  <header class="hero">
-    <span class="hero-badge">Cuidado · Presença · Transformação</span>
+<nav>
+  <div class="brand">RAÍCES DEL AMOR</div>
+  <ul>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#caminhos">Caminhos</a></li>
+    <li><a href="discurso.html">Discurso</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
 
-    <div class="hero-geometry" aria-hidden="true">
-      <svg viewBox="-150 -150 300 300" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="glowSoft" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.4" result="blur"/>
-            <feMerge>
-              <feMergeNode in="blur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-          <filter id="glowStrong" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feMerge>
-              <feMergeNode in="blur"/>
-              <feMergeNode in="blur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-          <radialGradient id="ambient">
-            <stop offset="0%"   stop-color="#d4af37" stop-opacity="0.35"/>
-            <stop offset="35%"  stop-color="#d4af37" stop-opacity="0.12"/>
-            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
+<canvas id="particles"></canvas>
 
-        <!-- halo ambiente pulsante -->
-        <circle r="150" fill="url(#ambient)" class="pulse-glow"/>
-
-        <!-- CAMADA 1 · raios de luz (24 linhas) -->
-        <g class="rot-slow" filter="url(#glowSoft)" opacity="0.5">
-          <g stroke="#f0d67a" stroke-width="0.4">
-            <line x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(15)"  x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(30)"  x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(45)"  x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(60)"  x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(75)"  x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(90)"  x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(105)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(120)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(135)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(150)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(165)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(180)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(195)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(210)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(225)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(240)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(255)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(270)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(285)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(300)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(315)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(330)" x1="0" y1="0" x2="0" y2="-140"/>
-            <line transform="rotate(345)" x1="0" y1="0" x2="0" y2="-140"/>
-          </g>
-        </g>
-
-        <!-- CAMADA 2 · hexagrama (Estrela de Davi) -->
-        <g class="rot-medium-rev" filter="url(#glowSoft)">
-          <polygon points="0,-85 73.6,42.5 -73.6,42.5" stroke="#d4af37" stroke-width="0.9" fill="none" opacity="0.8"/>
-          <polygon points="0,85 73.6,-42.5 -73.6,-42.5" stroke="#d4af37" stroke-width="0.9" fill="none" opacity="0.8"/>
-        </g>
-
-        <!-- CAMADA 3 · flor da vida (19 círculos) -->
-        <g class="rot-slow-rev" filter="url(#glowSoft)">
-          <g stroke="#f0d67a" stroke-width="0.55" fill="none" opacity="0.55">
-            <circle r="30"/>
-            <circle cx="0"   cy="-30" r="30"/>
-            <circle cx="0"   cy="30"  r="30"/>
-            <circle cx="-26" cy="-15" r="30"/>
-            <circle cx="26"  cy="15"  r="30"/>
-            <circle cx="-26" cy="15"  r="30"/>
-            <circle cx="26"  cy="-15" r="30"/>
-            <circle cx="0"   cy="-60" r="30"/>
-            <circle cx="0"   cy="60"  r="30"/>
-            <circle cx="-52" cy="-30" r="30"/>
-            <circle cx="52"  cy="30"  r="30"/>
-            <circle cx="-52" cy="30"  r="30"/>
-            <circle cx="52"  cy="-30" r="30"/>
-            <circle cx="-45" cy="-45" r="30"/>
-            <circle cx="45"  cy="45"  r="30"/>
-            <circle cx="-45" cy="45"  r="30"/>
-            <circle cx="45"  cy="-45" r="30"/>
-            <circle cx="-52" cy="0"   r="30"/>
-            <circle cx="52"  cy="0"   r="30"/>
-          </g>
-        </g>
-
-        <!-- CAMADA 4 · anéis externos com marcações -->
-        <g class="rot-medium">
-          <circle r="95"  stroke="#d4af37" stroke-width="0.3" fill="none" opacity="0.4"/>
-          <circle r="112" stroke="#d4af37" stroke-width="0.4" fill="none" opacity="0.55"/>
-          <circle r="118" stroke="#d4af37" stroke-width="0.3" fill="none" opacity="0.35"/>
-          <g stroke="#f0d67a" stroke-width="0.7" opacity="0.75">
-            <line x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(15)"  x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(30)"  x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(45)"  x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(60)"  x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(75)"  x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(90)"  x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(105)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(120)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(135)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(150)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(165)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(180)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(195)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(210)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(225)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(240)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(255)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(270)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(285)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(300)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(315)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(330)" x1="0" y1="-112" x2="0" y2="-118"/>
-            <line transform="rotate(345)" x1="0" y1="-112" x2="0" y2="-118"/>
-          </g>
-          <!-- pontos cardeais -->
-          <g fill="#f0d67a">
-            <circle cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(30)"  cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(60)"  cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(90)"  cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(120)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(150)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(180)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(210)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(240)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(270)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(300)" cx="0" cy="-85" r="2"/>
-            <circle transform="rotate(330)" cx="0" cy="-85" r="2"/>
-          </g>
-        </g>
-
-        <!-- CAMADA 5 · linhas de conexão (metatron) -->
-        <g class="rot-slow" stroke="#d4af37" stroke-width="0.35" opacity="0.35">
-          <line x1="0" y1="-60" x2="52" y2="30"/>
-          <line x1="0" y1="-60" x2="-52" y2="30"/>
-          <line x1="0" y1="60"  x2="52" y2="-30"/>
-          <line x1="0" y1="60"  x2="-52" y2="-30"/>
-          <line x1="-52" y1="0" x2="52" y2="0"/>
-          <line x1="-45" y1="-45" x2="45" y2="45"/>
-          <line x1="45"  y1="-45" x2="-45" y2="45"/>
-        </g>
-
-        <!-- CAMADA 6 · estrela central com glow forte -->
-        <g filter="url(#glowStrong)">
-          <circle r="5"  fill="#ffd966"/>
-          <circle r="12" fill="none" stroke="#ffd966" stroke-width="0.5" opacity="0.9"/>
-          <circle r="20" fill="none" stroke="#d4af37" stroke-width="0.4" opacity="0.65"/>
-          <circle r="28" fill="none" stroke="#d4af37" stroke-width="0.3" opacity="0.4"/>
-        </g>
-      </svg>
-    </div>
-
-    <h1 class="hero-title">
-      <span class="line line-1">Raíces</span>
-      <span class="line line-2">del Amor</span>
-    </h1>
-
-    <div class="hero-divider"></div>
-
-    <p class="hero-subtitle">
-      Um espaço dedicado ao cuidado, à presença e à transformação —
-      entre filosofia, espiritualidade e escuta compassiva.
+<section class="hero">
+  <svg class="hero-svg" viewBox="0 0 800 800" aria-hidden="true">
+    <g fill="none" stroke="#D4AF37" stroke-width="1.2">
+      <circle cx="400" cy="400" r="60"/>
+      <circle cx="460" cy="400" r="60"/>
+      <circle cx="340" cy="400" r="60"/>
+      <circle cx="430" cy="348" r="60"/>
+      <circle cx="370" cy="348" r="60"/>
+      <circle cx="430" cy="452" r="60"/>
+      <circle cx="370" cy="452" r="60"/>
+      <circle cx="400" cy="296" r="60"/>
+      <circle cx="400" cy="504" r="60"/>
+      <circle cx="490" cy="348" r="60"/>
+      <circle cx="310" cy="348" r="60"/>
+      <circle cx="490" cy="452" r="60"/>
+      <circle cx="310" cy="452" r="60"/>
+      <circle cx="460" cy="296" r="60"/>
+      <circle cx="340" cy="296" r="60"/>
+      <circle cx="460" cy="504" r="60"/>
+      <circle cx="340" cy="504" r="60"/>
+      <circle cx="520" cy="400" r="60"/>
+      <circle cx="280" cy="400" r="60"/>
+    </g>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Espaço Terapêutico</div>
+    <h1>Raíces del Amor</h1>
+    <p class="lead">
+      Um espaço dedicado ao cuidado, à presença e à transformação.<br>
+      Aqui, filosofia, espiritualidade, escuta compassiva e práticas contemplativas se encontram para recordar aquilo que nos faz profundamente humanos.
     </p>
-
-    <div class="hero-info">
-      <span class="info-pill">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
-        Rua Felipe Aché, 567
-      </span>
-      <span class="info-pill">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-        Elena Aberastain
-      </span>
-      <a class="info-pill" href="https://wa.me/5516992221496" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-        </svg>
-        WhatsApp
-      </a>
-      <a class="info-pill" href="https://instagram.com/raicesdelamor_rp" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-        </svg>
-        @raicesdelamor_rp
-      </a>
-    </div>
-
     <div class="hero-cta">
-      <a href="https://wa.me/5516992221496" class="btn btn-primary" target="_blank" rel="noopener">Agendar uma conversa</a>
-      <a href="#manifesto" class="btn btn-outline">Explorar</a>
+      <a href="discurso.html" class="btn btn-primary">Ler o Discurso da Manhã</a>
+      <a href="#manifesto" class="btn btn-ghost">Conhecer o Projeto</a>
+    </div>
+  </div>
+</section>
+
+<section id="manifesto" class="section">
+  <h2>Manifesto</h2>
+  <p>
+    Acredito que o amor não é apenas sentimento.<br>
+    É uma forma de atenção. Uma maneira de olhar para si mesmo,<br>
+    para o outro e para a vida.
+  </p>
+  <p>
+    Raíces del Amor nasce da união entre contemplação, filosofia,<br>
+    Reiki, Comunicação Não Violenta, espiritualidade, presença e cuidado.
+  </p>
+  <p>
+    Não é um lugar de respostas definitivas.<br>
+    É um espaço para perguntas mais verdadeiras.
+  </p>
+  <div class="quote-block">
+    "Antes da pressa, eu escolho o centro."
+  </div>
+</section>
+
+<section id="caminhos" class="section">
+  <h2>Caminhos</h2>
+  <div class="cards">
+
+    <div class="card">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="1.2">
+        <circle cx="50" cy="50" r="28"/>
+        <circle cx="50" cy="50" r="16"/>
+        <circle cx="50" cy="50" r="4"/>
+      </svg>
+      <h3>Gratidão</h3>
+      <p>Reconhecer a vida como dom e cultivar a capacidade de agradecer mesmo em meio ao ajuste.</p>
     </div>
 
-    <div class="scroll-indicator">Role para descobrir</div>
-  </header>
-
-  <!-- ============================================================
-       MANIFESTO
-  ============================================================ -->
-  <section class="section reveal" id="manifesto">
-    <div class="section-header">
-      <span class="section-tag">Manifesto</span>
-      <h2 class="section-title">O amor como forma de atenção</h2>
+    <div class="card">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="1.2">
+        <circle cx="38" cy="50" r="20"/>
+        <circle cx="62" cy="50" r="20"/>
+      </svg>
+      <h3>Presença</h3>
+      <p>Habitar o momento presente com serenidade, inteireza e consciência desperta.</p>
     </div>
-    <div class="manifesto-card">
-      <p class="manifesto-text">
-        Acredito que o amor não é apenas sentimento. É uma forma de atenção.
-        Uma maneira de olhar para si mesmo, para o outro e para a vida.
-        <strong>Raíces del Amor</strong> nasce da união entre contemplação,
-        filosofia, Comunicação Não Violenta, espiritualidade, presença e cuidado.
-        Não é um lugar de respostas definitivas. É um espaço para perguntas mais verdadeiras.
-      </p>
+
+    <div class="card">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="1.2">
+        <path d="M20 50 Q50 20 80 50 Q50 80 20 50 Z"/>
+        <circle cx="50" cy="50" r="6"/>
+      </svg>
+      <h3>Cuidado</h3>
+      <p>Transformar atenção em gesto, escuta em acolhimento e força em serviço.</p>
     </div>
-  </section>
 
-  <!-- ============================================================
-       CAMINHOS
-  ============================================================ -->
-  <section class="section reveal" id="caminhos">
-    <div class="section-header">
-      <span class="section-tag">Caminhos</span>
-      <h2 class="section-title">Práticas que nos aproximam do essencial</h2>
-      <p class="section-desc">Cada caminho é um convite a habitar a vida com mais inteireza e presença.</p>
+    <div class="card">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="1.2">
+        <polygon points="50,15 85,80 15,80"/>
+        <polygon points="50,85 85,20 15,20"/>
+      </svg>
+      <h3>Comunicação</h3>
+      <p>Falar com verdade, ouvir com abertura e construir pontes humanas pela CNV.</p>
     </div>
-    <div class="paths-grid">
-      <div class="path-card">
-        <span class="path-icon">✦</span>
-        <h3>Gratidão</h3>
-        <p>Reconhecer a vida como dom e cultivar a capacidade de agradecer.</p>
-      </div>
-      <div class="path-card">
-        <span class="path-icon">✦</span>
-        <h3>Presença</h3>
-        <p>Habitar o momento presente com serenidade, inteireza e consciência.</p>
-      </div>
-      <div class="path-card">
-        <span class="path-icon">✦</span>
-        <h3>Cuidado</h3>
-        <p>Transformar atenção em gesto, escuta em acolhimento e força em serviço.</p>
-      </div>
-      <div class="path-card">
-        <span class="path-icon">✦</span>
-        <h3>Comunicação</h3>
-        <p>Falar com verdade, ouvir com abertura e construir pontes humanas.</p>
-      </div>
-      <div class="path-card">
-        <span class="path-icon">✦</span>
-        <h3>Transformação</h3>
-        <p>Encontrar no desafio a possibilidade de crescimento e criação.</p>
-      </div>
-      <div class="path-card">
-        <span class="path-icon">✦</span>
-        <h3>Escuta</h3>
-        <p>Ouvir o outro com abertura, sem julgamento, reconhecendo sua inteireza.</p>
-      </div>
+
+    <div class="card">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="1.2">
+        <ellipse cx="50" cy="50" rx="38" ry="14"/>
+        <ellipse cx="50" cy="50" rx="38" ry="26"/>
+        <ellipse cx="50" cy="50" rx="14" ry="38"/>
+      </svg>
+      <h3>Transformação</h3>
+      <p>Encontrar no desafio a possibilidade de crescimento, criação e amor ao destino.</p>
     </div>
-  </section>
 
-  <!-- ============================================================
-       DISCURSO DA MANHÃ
-  ============================================================ -->
-  <section class="section reveal">
-    <div class="morning-quote">
-      <blockquote>“Antes da pressa, eu escolho o centro.”</blockquote>
-      <cite>— Discurso da Manhã</cite>
-      <p>
-        Todas as manhãs procuro recordar aquilo que considero essencial:
-        a gratidão de estar vivo, a serenidade ensinada por Teresa d'Ávila,
-        a confiança cultivada por Émile Coué, o amor ao destino proposto por Nietzsche,
-        a escuta compassiva da Comunicação Não Violenta
-        e a humildade de reconhecer nossa condição humana compartilhada.
-      </p>
+    <div class="card">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#D4AF37" stroke-width="1.2">
+        <circle cx="50" cy="50" r="10"/>
+        <circle cx="50" cy="50" r="20"/>
+        <circle cx="50" cy="50" r="30"/>
+        <circle cx="50" cy="50" r="40"/>
+      </svg>
+      <h3>Reiki</h3>
+      <p>Uma prática de serenidade, respeito, presença, consentimento e harmonização.</p>
     </div>
-  </section>
 
-  <!-- ============================================================
-       INTENÇÃO
-  ============================================================ -->
-  <section class="section reveal">
-    <div class="intention">
-      <p>
-        Que minha <span class="highlight">palavra</span> construa.<br>
-        Que minhas <span class="highlight">mãos</span> sirvam.<br>
-        Que meu <span class="highlight">coração</span> permaneça desperto.
-      </p>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============================================================
-       CONTATO
-  ============================================================ -->
-  <section class="section reveal" id="contato">
-    <div class="section-header">
-      <span class="section-tag">Contato</span>
-      <h2 class="section-title">Vamos conversar?</h2>
-      <p class="section-desc">Atendimento com a terapeuta Elena Aberastain.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <span class="contact-label">Terapeuta</span>
-        <h3>Elena Aberastain</h3>
-        <p><a href="https://instagram.com/elenaaberastain" target="_blank" rel="noopener">@elenaaberastain</a></p>
-      </div>
+<section class="section">
+  <h2>Discurso da Manhã</h2>
+  <p>
+    Todas as manhãs procuro recordar aquilo que considero essencial:
+    a gratidão de estar vivo, a serenidade ensinada por Teresa d'Ávila,
+    a confiança cultivada por Émile Coué, o amor ao destino proposto por Nietzsche,
+    a gentileza dos princípios do Reiki, a escuta compassiva da Comunicação Não Violenta
+    e a humildade de reconhecer nossa condição humana compartilhada.
+  </p>
+  <div class="quote-block">
+    Que minha palavra construa.<br>
+    Que minhas mãos sirvam.<br>
+    Que meu coração permaneça desperto.
+  </div>
+  <div style="text-align:center;margin-top:50px;">
+    <a href="discurso.html" class="btn btn-primary">Ler o Discurso Completo</a>
+  </div>
+</section>
 
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-        </div>
-        <span class="contact-label">Endereço</span>
-        <h3>Rua Felipe Aché, 567</h3>
-      </div>
+<footer id="contato">
+  <h2>Gratidão</h2>
+  <p>
+    Assim é.<br>
+    Assim quero.<br>
+    Assim começo.
+  </p>
+  <div class="sig">RAÍCES DEL AMOR · ESPAÇO TERAPÊUTICO</div>
+</footer>
 
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-          </svg>
-        </div>
-        <span class="contact-label">WhatsApp</span>
-        <h3><a href="https://wa.me/5516992221496" target="_blank" rel="noopener">+55 16 99222-1496</a></h3>
-      </div>
+<script>
+// Particles canvas
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+const N = window.innerWidth < 700 ? 60 : 130;
+for(let i=0;i<N;i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    s: Math.random()*1.8+0.4,
+    v: Math.random()*0.35+0.08,
+    drift: (Math.random()-0.5)*0.15,
+    a: Math.random()*0.5+0.2
+  });
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.y -= p.v;
+    p.x += p.drift;
+    if(p.y < -10){ p.y = canvas.height+10; p.x = Math.random()*canvas.width; }
+    if(p.x < -10) p.x = canvas.width+10;
+    if(p.x > canvas.width+10) p.x = -10;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+    ctx.fillStyle = `rgba(212,175,55,${p.a*0.5})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
 
-      <div class="contact-card">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </div>
-        <span class="contact-label">Instagram</span>
-        <h3><a href="https://instagram.com/raicesdelamor_rp" target="_blank" rel="noopener">@raicesdelamor_rp</a></h3>
-        <p><a href="https://instagram.com/elenaaberastain" target="_blank" rel="noopener">@elenaaberastain</a></p>
-      </div>
-    </div>
-  </section>
+// Reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+},{threshold:.15});
+document.querySelectorAll('.section').forEach(s=>io.observe(s));
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer class="footer">
-    <p><strong style="color: var(--gold-light); font-weight: 500;">Raíces del Amor</strong> · Cuidado, Presença e Transformação</p>
-    <p>Terapeuta Elena Aberastain · Rua Felipe Aché, 567</p>
-    <p>
-      <a href="https://wa.me/5516992221496" target="_blank" rel="noopener">WhatsApp</a>
-      &nbsp;·&nbsp;
-      <a href="https://instagram.com/elenaaberastain" target="_blank" rel="noopener">@elenaaberastain</a>
-      &nbsp;·&nbsp;
-      <a href="https://instagram.com/raicesdelamor_rp" target="_blank" rel="noopener">@raicesdelamor_rp</a>
-    </p>
-    <p style="margin-top: 1rem; font-size: 0.7rem; opacity: 0.5;">visualcampo.github.io/RAICESDELAMOR</p>
-  </footer>
-
-  <!-- ============================================================
-       SCRIPT — scroll reveal
-  ============================================================ -->
-  <script>
-    (function () {
-      const reveals = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-      );
-      reveals.forEach((el) => observer.observe(el));
-    })();
-  </script>
+// Mouse position on cards
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+</script>
 </body>
 </html>
