@@ -1,558 +1,805 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Raíces del Amor</title>
-
-<meta name="description"
-content="Presença, cuidado, gratidão, filosofia, espiritualidade e transformação humana.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
---gold:#d4af37;
---light-gold:#efd990;
---bg:#07111f;
---glass:rgba(255,255,255,.06);
---border:rgba(255,255,255,.10);
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-
-font-family:Inter,sans-serif;
-
-background:
-radial-gradient(circle at 15% 15%, rgba(56,189,248,.12), transparent 30%),
-radial-gradient(circle at 85% 60%, rgba(139,92,246,.14), transparent 30%),
-linear-gradient(135deg,#07111f,#0b1627,#0f1d34);
-
-color:white;
-overflow-x:hidden;
-
-}
-
-/* fundo */
-
-body::before{
-
-content:"";
-
-position:fixed;
-inset:0;
-
-background:
-radial-gradient(circle at center,
-transparent 60%,
-rgba(0,0,0,.35));
-
-pointer-events:none;
-
-}
-
-/* hero */
-
-.hero{
-
-min-height:100vh;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-text-align:center;
-
-padding:40px;
-
-position:relative;
-
-}
-
-.hero svg{
-
-position:absolute;
-width:min(900px,90vw);
-
-opacity:.08;
-
-animation:rotateSlow 280s linear infinite;
-
-}
-
-@keyframes rotateSlow{
-
-from{
-transform:rotate(0deg);
-}
-
-to{
-transform:rotate(360deg);
-}
-
-}
-
-.hero h1{
-
-font-family:'Cormorant Garamond',serif;
-font-size:clamp(4rem,9vw,7rem);
-
-letter-spacing:4px;
-
-color:var(--light-gold);
-
-z-index:2;
-
-}
-
-.hero p{
-
-z-index:2;
-
-max-width:800px;
-
-margin-top:25px;
-
-font-size:1.25rem;
-
-line-height:1.8;
-
-color:#d9d9d9;
-
-}
-
-/* seções */
-
-.section{
-
-width:min(1100px,92%);
-margin:auto;
-
-padding:80px 40px;
-
-margin-bottom:60px;
-
-border-radius:30px;
-
-backdrop-filter:blur(18px);
-
-background:var(--glass);
-
-border:1px solid var(--border);
-
-}
-
-.section h2{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:3rem;
-
-color:var(--light-gold);
-
-margin-bottom:25px;
-
-text-align:center;
-
-}
-
-.section p{
-
-line-height:2;
-font-size:1.08rem;
-
-max-width:900px;
-margin:auto;
-
-}
-
-/* cards */
-
-.cards{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
-margin-top:50px;
-
-}
-
-.card{
-
-padding:25px;
-
-border-radius:20px;
-
-background:rgba(255,255,255,.04);
-
-border:1px solid rgba(255,255,255,.08);
-
-transition:.5s;
-
-}
-
-.card:hover{
-
-transform:
-translateY(-5px);
-
-background:rgba(255,255,255,.06);
-
-}
-
-.card h3{
-
-margin-bottom:12px;
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:2rem;
-
-color:var(--light-gold);
-
-}
-
-.card p{
-
-font-size:.95rem;
-
-line-height:1.8;
-
-}
-
-/* discurso */
-
-.quote{
-
-font-family:
-'Cormorant Garamond',serif;
-
-font-size:2rem;
-
-text-align:center;
-
-line-height:1.8;
-
-color:var(--light-gold);
-
-margin:40px auto;
-
-max-width:900px;
-
-}
-
-.button{
-
-display:inline-block;
-
-padding:16px 36px;
-
-border-radius:999px;
-
-text-decoration:none;
-
-margin-top:35px;
-
-border:1px solid var(--gold);
-
-color:white;
-
-transition:.4s;
-
-}
-
-.button:hover{
-
-background:var(--gold);
-color:black;
-
-}
-
-.center{
-text-align:center;
-}
-
-footer{
-
-padding:100px 20px;
-
-text-align:center;
-
-}
-
-footer h2{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:4rem;
-
-color:var(--light-gold);
-
-}
-
-footer p{
-
-margin-top:20px;
-
-font-size:1.1rem;
-
-line-height:2;
-
-}
-
-/* responsivo */
-
-@media(max-width:800px){
-
-.section{
-
-padding:40px 25px;
-
-}
-
-.hero h1{
-
-font-size:3.5rem;
-
-}
-
-.section h2{
-
-font-size:2.3rem;
-
-}
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raíces del Amor · Cuidado, Presença e Transformação</title>
+  <meta name="description" content="Um espaço dedicado ao cuidado, à presença e à transformação. Entre filosofia, espiritualidade, escuta compassiva e práticas contemplativas." />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & VARIÁVEIS
+    ============================================================ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #fdfaf6;
+      --surface: #ffffff;
+      --text: #2c3e50;
+      --text-soft: #5a6b7c;
+      --gold: #c9a227;
+      --gold-soft: #e8d5a3;
+      --rose: #d4a5a5;
+      --sage: #a8c3b0;
+      --sky: #b8d4e3;
+      --shadow: 0 20px 60px rgba(44, 62, 80, 0.08);
+      --shadow-soft: 0 8px 24px rgba(44, 62, 80, 0.06);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       FUNDO ANIMADO SUAVE
+    ============================================================ */
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 20% 20%, rgba(232, 213, 163, 0.25) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 30%, rgba(212, 165, 165, 0.18) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 80%, rgba(168, 195, 176, 0.20) 0%, transparent 50%);
+      animation: bgDrift 24s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes bgDrift {
+      0%   { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.08) translate(2%, -1.5%); }
+    }
+
+    /* ============================================================
+       HERO — PAINEL INICIAL EM DESTAQUE
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      position: relative;
+    }
+
+    .hero-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 780px;
+      width: 100%;
+      padding: 4rem 2.5rem 3.5rem;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      animation: panelReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    @keyframes panelReveal {
+      from { opacity: 0; transform: translateY(28px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* SVG de geometria sagrada */
+    .hero-geometry {
+      width: 280px;
+      height: 280px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .hero-geometry svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .geo-rotate-slow {
+      animation: rotateGeo 48s linear infinite;
+      transform-origin: 50% 50%;
+    }
+
+    .geo-rotate-reverse {
+      animation: rotateGeoReverse 36s linear infinite;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes rotateGeo {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateGeoReverse {
+      from { transform: rotate(360deg); }
+      to   { transform: rotate(0deg); }
+    }
+
+    .geo-pulse {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    .geo-pulse-delay {
+      animation: pulseGlow 4s ease-in-out 1.5s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.35; }
+      50%      { opacity: 0.85; }
+    }
+
+    .hero-badge {
+      font-family: "Inter", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201, 162, 39, 0.1);
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      border: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .hero-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.8rem, 7vw, 4.4rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-top: -0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-soft);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-family: "Inter", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(44, 62, 80, 0.24);
+      background: #1e2d3d;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(44, 62, 80, 0.15);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+      background: rgba(201, 162, 39, 0.04);
+    }
+
+    /* ============================================================
+       SEÇÕES DE CONTEÚDO
+    ============================================================ */
+    .section {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 600px;
+      margin: 1rem auto 0;
+    }
+
+    /* Manifesto */
+    .manifesto-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(44, 62, 80, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifesto-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), var(--rose), var(--sage));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .manifesto-text {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .manifesto-text strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* Caminhos — Grid */
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .path-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(44, 62, 80, 0.04);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .path-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .path-icon {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      color: var(--gold);
+    }
+
+    .path-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .path-card p {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .path-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+      border-radius: 0 0 0 var(--radius-sm);
+    }
+
+    .path-card:hover::after {
+      width: 100%;
+    }
+
+    /* Discurso da Manhã */
+    .morning-quote {
+      background: linear-gradient(135deg, rgba(232, 213, 163, 0.25), rgba(212, 165, 165, 0.15));
+      border-radius: var(--radius);
+      padding: 4rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .morning-quote blockquote {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.5;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .morning-quote cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-family: "Inter", sans-serif;
+      font-size: 0.85rem;
+      font-style: normal;
+      color: var(--text-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Intenção */
+    .intention {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .intention p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      line-height: 1.8;
+      color: var(--text);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .intention .highlight {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       CONTATO
+    ============================================================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(44, 62, 80, 0.04);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-card p {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .contact-card a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.4);
+      transition: var(--transition);
+    }
+
+    .contact-card a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      border-top: 1px solid rgba(44, 62, 80, 0.06);
+      margin-top: 2rem;
+    }
+
+    .footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+      transition: var(--transition);
+    }
+
+    .footer a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       RESPONSIVO
+    ============================================================ */
+    @media (max-width: 768px) {
+      .hero-panel {
+        padding: 2.5rem 1.5rem 2.5rem;
+        gap: 1.5rem;
+      }
+      .hero-geometry {
+        width: 200px;
+        height: 200px;
+      }
+      .section {
+        padding: 4rem 1.2rem;
+      }
+      .manifesto-card {
+        padding: 2.5rem 1.8rem;
+      }
+      .manifesto-text {
+        font-size: 1.15rem;
+      }
+      .morning-quote {
+        padding: 2.5rem 1.8rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-<svg viewBox="0 0 800 800">
-
-<g fill="none" stroke="#d4af37" stroke-width="1">
-
-<circle cx="400" cy="400" r="120"/>
-<circle cx="280" cy="400" r="120"/>
-<circle cx="520" cy="400" r="120"/>
-
-<circle cx="340" cy="296" r="120"/>
-<circle cx="460" cy="296" r="120"/>
-
-<circle cx="340" cy="504" r="120"/>
-<circle cx="460" cy="504" r="120"/>
-
-</g>
-
-</svg>
-
-<h1>RAÍCES DEL AMOR</h1>
-
-<p>
-
-Um espaço dedicado ao cuidado, à presença e à transformação.
-
-Entre filosofia, espiritualidade, escuta compassiva e práticas contemplativas,
-buscamos recordar aquilo que nos faz profundamente humanos.
-
-</p>
-
-</section>
-
-<section class="section">
-
-<h2>Manifesto</h2>
-
-<p>
-
-Acredito que o amor não é apenas sentimento.
-
-É uma forma de atenção.
-
-Uma maneira de olhar para si mesmo,
-para o outro
-e para a vida.
-
-Raíces del Amor nasce da união entre contemplação,
-filosofia,
-Reiki,
-Comunicação Não Violenta,
-espiritualidade,
-presença
-e cuidado.
-
-Não é um lugar de respostas definitivas.
-
-É um espaço para perguntas mais verdadeiras.
-
-</p>
-
-</section>
-
-<section class="section">
-
-<h2>Caminhos</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>✦ Gratidão</h3>
-
-<p>
-Reconhecer a vida como dom e cultivar a capacidade de agradecer.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>✦ Presença</h3>
-
-<p>
-Habitar o momento presente com serenidade, inteireza e consciência.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>✦ Cuidado</h3>
-
-<p>
-Transformar atenção em gesto, escuta em acolhimento e força em serviço.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>✦ Comunicação</h3>
-
-<p>
-Falar com verdade, ouvir com abertura e construir pontes humanas.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>✦ Transformação</h3>
-
-<p>
-Encontrar no desafio a possibilidade de crescimento e criação.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>✦ Reiki</h3>
-
-<p>
-Uma prática de serenidade, respeito, presença e harmonização.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>Discurso da Manhã</h2>
-
-<div class="quote">
-
-“Antes da pressa, eu escolho o centro.”
-
-</div>
-
-<p>
-
-Todas as manhãs procuro recordar aquilo que considero essencial:
-
-a gratidão de estar vivo,
-
-a serenidade ensinada por Teresa d'Ávila,
-
-a confiança cultivada por Émile Coué,
-
-o amor ao destino proposto por Nietzsche,
-
-a gentileza dos princípios do Reiki,
-
-a escuta compassiva da Comunicação Não Violenta
-
-e a humildade de reconhecer nossa condição humana compartilhada.
-
-</p>
-
-<div class="center">
-
-<a href="https://visualcampo.github.io/RAICESDELAMOR/discurso.html" class="button">
-
-Ler o Discurso Completo
-
-</a>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>Uma Intenção</h2>
-
-<div class="quote">
-
-Que minha palavra construa.<br>
-Que minhas mãos sirvam.<br>
-Que meu coração permaneça desperto.
-
-</div>
-
-</section>
-
-<footer>
-
-<h2>Gratidão</h2>
-
-<p>
-
-Assim é.<br>
-Assim quero.<br>
-Assim começo.
-
-</p>
-
-</footer>
+  <!-- Fundo animado -->
+  <div class="bg-gradient" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       HERO / PAINEL INICIAL
+  ============================================================ -->
+  <header class="hero">
+    <div class="hero-panel">
+
+      <!-- Geometria Sagrada: Flor da Vida + Cubo de Metatron -->
+      <div class="hero-geometry" aria-hidden="true">
+        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Flor da Vida -->
+          <g class="geo-rotate-slow">
+            <circle cx="150" cy="150" r="30" stroke="#c9a227" stroke-width="1.2" opacity="0.7"/>
+            <circle cx="150" cy="120" r="30" stroke="#d4a5a5" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="150" cy="180" r="30" stroke="#d4a5a5" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="120" cy="150" r="30" stroke="#a8c3b0" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="180" cy="150" r="30" stroke="#a8c3b0" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="126" cy="126" r="30" stroke="#b8d4e3" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="174" cy="174" r="30" stroke="#b8d4e3" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="150" cy="90" r="30" stroke="#c9a227" stroke-width="1" opacity="0.35"/>
+            <circle cx="150" cy="210" r="30" stroke="#c9a227" stroke-width="1" opacity="0.35"/>
+            <circle cx="90" cy="150" r="30" stroke="#c9a227" stroke-width="1" opacity="0.35"/>
+            <circle cx="210" cy="150" r="30" stroke="#c9a227" stroke-width="1" opacity="0.35"/>
+            <circle cx="108" cy="108" r="30" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
+            <circle cx="192" cy="192" r="30" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
+            <circle cx="108" cy="192" r="30" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
+            <circle cx="192" cy="108" r="30" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
+          </g>
+
+          <!-- Cubo de Metatron -->
+          <g class="geo-rotate-reverse" stroke="#c9a227" stroke-width="0.8" opacity="0.5">
+            <line x1="150" y1="120" x2="150" y2="180" />
+            <line x1="120" y1="150" x2="180" y2="150" />
+            <line x1="126" y1="126" x2="174" y2="174" />
+            <line x1="174" y1="126" x2="126" y2="174" />
+            <line x1="150" y1="90" x2="150" y2="210" />
+            <line x1="90" y1="150" x2="210" y2="150" />
+            <line x1="108" y1="108" x2="192" y2="192" />
+            <line x1="192" y1="108" x2="108" y2="192" />
+            <line x1="150" y1="120" x2="126" y2="126" />
+            <line x1="150" y1="120" x2="174" y2="126" />
+            <line x1="150" y1="180" x2="126" y2="174" />
+            <line x1="150" y1="180" x2="174" y2="174" />
+            <line x1="120" y1="150" x2="126" y2="126" />
+            <line x1="120" y1="150" x2="126" y2="174" />
+            <line x1="180" y1="150" x2="174" y2="126" />
+            <line x1="180" y1="150" x2="174" y2="174" />
+          </g>
+
+          <!-- Círculos externos pulsantes -->
+          <circle cx="150" cy="150" r="105" stroke="#c9a227" stroke-width="1.5"
+                  opacity="0.25" class="geo-pulse" stroke-dasharray="6 8" />
+          <circle cx="150" cy="150" r="105" stroke="#d4a5a5" stroke-width="1"
+                  opacity="0.15" class="geo-pulse-delay" stroke-dasharray="4 12" />
+        </svg>
+      </div>
+
+      <span class="hero-badge">Cuidado · Presença · Transformação</span>
+
+      <h1 class="hero-title">Raíces del Amor</h1>
+
+      <p class="hero-subtitle">
+        Um espaço dedicado ao cuidado, à presença e à transformação.
+        Entre filosofia, espiritualidade, escuta compassiva e práticas contemplativas.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#manifesto" class="btn btn-primary">Ler o Manifesto</a>
+        <a href="#caminhos" class="btn btn-outline">Explorar Caminhos</a>
+        <a href="https://wa.me/5516992221496" class="btn btn-outline" target="_blank" rel="noopener">Agendar</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MANIFESTO
+  ============================================================ -->
+  <section class="section reveal" id="manifesto">
+    <div class="section-header">
+      <p class="section-tag">Manifesto</p>
+      <h2 class="section-title">O amor como forma de atenção</h2>
+    </div>
+    <div class="manifesto-card">
+      <p class="manifesto-text">
+        Acredito que o amor não é apenas sentimento. É uma forma de atenção.
+        Uma maneira de olhar para si mesmo, para o outro e para a vida.
+        <strong>Raíces del Amor</strong> nasce da união entre contemplação,
+        filosofia, Comunicação Não Violenta, espiritualidade, presença e cuidado.
+        Não é um lugar de respostas definitivas. É um espaço para perguntas mais verdadeiras.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CAMINHOS
+  ============================================================ -->
+  <section class="section reveal" id="caminhos">
+    <div class="section-header">
+      <p class="section-tag">Caminhos</p>
+      <h2 class="section-title">Práticas que nos aproximam do essencial</h2>
+      <p class="section-desc">
+        Cada caminho é um convite a habitar a vida com mais inteireza e presença.
+      </p>
+    </div>
+    <div class="paths-grid">
+      <div class="path-card">
+        <span class="path-icon">✦</span>
+        <h3>Gratidão</h3>
+        <p>Reconhecer a vida como dom e cultivar a capacidade de agradecer.</p>
+      </div>
+      <div class="path-card">
+        <span class="path-icon">✦</span>
+        <h3>Presença</h3>
+        <p>Habitar o momento presente com serenidade, inteireza e consciência.</p>
+      </div>
+      <div class="path-card">
+        <span class="path-icon">✦</span>
+        <h3>Cuidado</h3>
+        <p>Transformar atenção em gesto, escuta em acolhimento e força em serviço.</p>
+      </div>
+      <div class="path-card">
+        <span class="path-icon">✦</span>
+        <h3>Comunicação</h3>
+        <p>Falar com verdade, ouvir com abertura e construir pontes humanas.</p>
+      </div>
+      <div class="path-card">
+        <span class="path-icon">✦</span>
+        <h3>Transformação</h3>
+        <p>Encontrar no desafio a possibilidade de crescimento e criação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DISCURSO DA MANHÃ
+  ============================================================ -->
+  <section class="section reveal" id="discurso">
+    <div class="morning-quote">
+      <blockquote>
+        “Antes da pressa, eu escolho o centro.”
+      </blockquote>
+      <cite>— Discurso da Manhã</cite>
+      <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--text-soft); line-height: 1.8; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Todas as manhãs procuro recordar aquilo que considero essencial:
+        a gratidão de estar vivo, a serenidade ensinada por Teresa d'Ávila,
+        a confiança cultivada por Émile Coué, o amor ao destino proposto por Nietzsche,
+        a escuta compassiva da Comunicação Não Violenta
+        e a humildade de reconhecer nossa condição humana compartilhada.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTENÇÃO
+  ============================================================ -->
+  <section class="section reveal" id="intencao">
+    <div class="intention">
+      <p>
+        Que minha <span class="highlight">palavra</span> construa.<br>
+        Que minhas <span class="highlight">mãos</span> sirvam.<br>
+        Que meu <span class="highlight">coração</span> permaneça desperto.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTATO
+  ============================================================ -->
+  <section class="section reveal" id="contato">
+    <div class="section-header">
+      <p class="section-tag">Contato</p>
+      <h2 class="section-title">Vamos conversar?</h2>
+      <p class="section-desc">
+        Atendimento com a terapeuta Elena Aberastain.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="contact-label">Terapeuta</span>
+        <h3>Elena Aberastain</h3>
+        <p>
+          <a href="https://instagram.com/elenaaberastain" target="_blank" rel="noopener">@elenaaberastain</a>
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-label">Endereço</span>
+        <h3>Rua Felipe Aché, 567</h3>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-label">WhatsApp</span>
+        <h3>
+          <a href="https://wa.me/5516992221496" target="_blank" rel="noopener">+55 16 99222-1496</a>
+        </h3>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-label">Instagram</span>
+        <h3>
+          <a href="https://instagram.com/raicesdelamor_rp" target="_blank" rel="noopener">@raicesdelamor_rp</a>
+        </h3>
+        <p>
+          <a href="https://instagram.com/elenaaberastain" target="_blank" rel="noopener">@elenaaberastain</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <p><strong>Raíces del Amor</strong> · Cuidado, Presença e Transformação</p>
+    <p style="margin-top: 0.5rem;">
+      Terapeuta Elena Aberastain · Rua Felipe Aché, 567
+    </p>
+    <p style="margin-top: 0.5rem;">
+      <a href="https://wa.me/5516992221496" target="_blank" rel="noopener">WhatsApp</a>
+      &nbsp;·&nbsp;
+      <a href="https://instagram.com/elenaaberastain" target="_blank" rel="noopener">@elenaaberastain</a>
+      &nbsp;·&nbsp;
+      <a href="https://instagram.com/raicesdelamor_rp" target="_blank" rel="noopener">@raicesdelamor_rp</a>
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.7rem; opacity: 0.6;">
+      visualcampo.github.io/RAICESDELAMOR
+    </p>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — SCROLL REVEAL
+  ============================================================ -->
+  <script>
+    (function () {
+      const reveals = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+    })();
+  </script>
 
 </body>
 </html>
